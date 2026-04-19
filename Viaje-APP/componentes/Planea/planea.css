@@ -1,0 +1,171 @@
+ @keyframes pulse-once {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    @keyframes shine {
+        0% { transform: translateX(-100%) skewX(-30deg); }
+        100% { transform: translateX(200%) skewX(-30deg); }
+    }
+
+    /* --------------------------------------------------- */
+    /* 2. ESTILOS DE FONDO Y CONTENEDOR PRINCIPAL */
+    /* --------------------------------------------------- */
+    body {
+        /* Fondo con degradado y textura de puntos sutil */
+        background-color: #f7f9fc;
+        background-image: radial-gradient(at 0% 0%, #ffffff 0%, #e0e7ff 100%),
+                          radial-gradient(#a3b1ff 0.5px, transparent 0.5px);
+        background-size: 100% 100%, 10px 10px;
+        transition: background-color 0.3s ease;
+    }
+    
+    /* Sombra profunda y animada para la tarjeta principal */
+    .main-card-shadow {
+        box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .main-card-shadow:hover {
+        box-shadow: 0 20px 40px -8px rgba(59, 130, 246, 0.25), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* --------------------------------------------------- */
+    /* 3. ESTILOS DE ELEMENTOS DE FORMULARIO */
+    /* --------------------------------------------------- */
+    
+    /* Estilo para las secciones condicionales: barra azul profesional */
+    .condicional { 
+        border-left: 5px solid #3b82f6; 
+        padding: 1.25rem; 
+        margin-top: 1rem; 
+        transition: all 0.3s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Estilos de los inputs (Manteniendo el buen focus) */
+    input[type="text"], 
+    input[type="date"], 
+    input[type="number"], 
+    textarea, 
+    select {
+        transition: all 0.3s ease;
+        border: 1px solid #d1d5db; 
+    }
+
+    /* --------------------------------------------------- */
+    /* 4. ESTILOS DE CHECKBOX Y RADIO (Efecto Latido) */
+    /* --------------------------------------------------- */
+    input[type="checkbox"], 
+    input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2px solid #3b82f6;
+        border-radius: 0.25rem;
+        transition: transform 0.15s ease-in-out, background-color 0.15s ease;
+        cursor: pointer;
+        position: relative;
+    }
+
+    input[type="radio"] {
+        border-radius: 50%; /* Redondeado para radios */
+    }
+
+    /* Estado Checked */
+    input[type="checkbox"]:checked,
+    input[type="radio"]:checked {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+        animation: pulse-once 0.3s ease-out; /* Animación al seleccionar */
+    }
+
+    /* Marca de verificación/punto central */
+    input[type="checkbox"]:checked::after {
+        content: '✔';
+        color: white;
+        font-size: 0.8rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    input[type="radio"]:checked::after {
+        content: '';
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* --------------------------------------------------- */
+    /* 5. ESTILOS DE BOTÓN DE ENVÍO (Efecto Brillo) */
+    /* --------------------------------------------------- */
+    #enviar-cotizacion {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%); /* Degradado más profundo */
+        border: none;
+        z-index: 10;
+        transform: translateZ(0); /* Acelerar renderizado */
+    }
+
+    /* Pseudo-elemento para el efecto de brillo (Shine) */
+    #enviar-cotizacion::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.4);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    #enviar-cotizacion:hover::before {
+        opacity: 1;
+        animation: shine 1.5s infinite; /* Aplicar animación de brillo */
+    }
+    
+    /* Estilos para el botón deshabilitado si no está logueado */
+    .btn-disabled {
+        opacity: 0.5; 
+        cursor: not-allowed;
+        background: #93c5fd !important;
+        box-shadow: none !important;
+    }
+    .btn-disabled::before {
+        display: none; /* Deshabilitar brillo cuando está inactivo */
+    }
+
+    /* --------------------------------------------------- */
+    /* 6. ESTILO DE TÍTULO (Línea Divisora) */
+    /* --------------------------------------------------- */
+
+    .section-title {
+        position: relative;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem; /* Más espacio */
+        padding-bottom: 0.5rem;
+    }
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px; /* Más grueso */
+        /* Aplicamos un degradado más notorio */
+        background: linear-gradient(90deg, #3b82f6, #60a5fa, #dbeafe, transparent);
+        border-radius: 1px;
+    }

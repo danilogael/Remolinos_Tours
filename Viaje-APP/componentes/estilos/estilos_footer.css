@@ -1,0 +1,146 @@
+/* 
+   FOOTER (PIE DE PÁGINA)
+El footer es la parte inferior de la página donde van los enlaces, redes sociales
+y derechos reservados. 
+Aquí se le aplica un fondo con degradado, color de texto blanco y espaciado.
+*/
+footer {
+  background: linear-gradient(135deg, #004aad, #007bff); /* Degradado azul en diagonal */
+  color: #fff; /* Texto blanco */
+  padding: 50px 10%; /* Espacio interno: 50px arriba/abajo, 10% a los lados */
+}
+
+
+/* 
+
+   CONTENEDOR DEL FOOTER (DIV GENERAL)
+
+display:grid crea columnas automáticas.
+auto-fit permite que el número de columnas se adapte según el tamaño de pantalla.
+minmax(230px, 1fr) asegura que cada columna mida mínimo 230px, máximo 1 fracción igual.
+gap controla la separación entre columnas.
+*/
+.footer-container {
+  display: grid; /* Activa cuadrícula flexible */
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Columnas adaptables */
+  gap: 40px; /* Espacio entre columnas */
+}
+
+
+/* 
+
+   TÍTULOS DE LAS SECCIONES DEL FOOTER (H3)
+
+Cada sección puede tener títulos como "Contacto", "Sobre nosotros", etc.
+position: relative permite añadir decoraciones debajo (como la línea azul).
+*/
+.footer-section h3 {
+  font-size: 18px; /* Tamaño del título */
+  margin-bottom: 15px; /* Espacio debajo del título */
+  position: relative; /* Permite posicionar elementos relativos al título */
+}
+
+
+/* 
+
+   DECORACIÓN BAJO LOS TÍTULOS (H3::after)
+
+::after crea un elemento virtual debajo del título, 
+usado aquí como una línea azul decorativa.
+*/
+.footer-section h3::after {
+  content: ""; /* Crea un elemento vacío (la línea) */
+  position: absolute; /* Posición absoluta respecto al h3 */
+  bottom: -5px; /* 5px por debajo del texto */
+  left: 0; /* Comienza desde la izquierda */
+  width: 40px; /* Largo de la línea */
+  height: 3px; /* Grosor de la línea */
+  background-color: #00d4ff; /* Azul brillante */
+  border-radius: 2px; /* Bordes redondeados */
+}
+
+
+/* 
+
+   LISTAS DEL FOOTER (UL y LI)
+
+list-style:none quita los puntos.  
+margin y padding ajustan los espacios de los elementos.
+*/
+.footer-section ul {
+  list-style: none; /* Sin viñetas */
+  padding: 0; /* Sin relleno interno */
+}
+
+.footer-section ul li {
+  margin: 10px 0; /* Espacio entre cada enlace del footer */
+}
+
+
+/* 
+
+   ENLACES DEL FOOTER (A)
+
+Color azul claro y efecto al pasar el mouse (hover).
+transition suaviza el cambio.
+*/
+.footer-section ul li a {
+  color: #dbe8ff; /* Azul muy claro */
+  text-decoration: none; /* Sin subrayado */
+  transition: color 0.3s; /* Suaviza el cambio de color */
+}
+
+/* 
+  Hover = cuando el usuario pasa el cursor por encima.
+  Aquí cambia el color del texto a azul brillante (#00d4ff).
+*/
+.footer-section ul li a:hover {
+  color: #00d4ff;
+}
+
+
+/* 
+
+   ICONOS DE REDES SOCIALES
+display:flex pone los íconos en fila.
+gap separa los íconos.
+*/
+.social-icons {
+  display: flex; /* Íconos uno junto al otro */
+  gap: 15px; /* Espacio entre cada ícono */
+  margin-top: 10px; /* Espacio sobre los íconos */
+}
+
+
+/* 
+  Los íconos cambian de tamaño y color con un efecto al pasar el mouse.
+  transform: scale(1.2) los agranda 20%.
+  transition hace que el cambio sea suave.
+*/
+.social-icons a {
+  color: #fff; /* Color blanco por defecto */
+  font-size: 22px; /* Tamaño del ícono */
+  text-decoration: none; /* Sin subrayado */
+  transition: transform 0.3s, color 0.3s; /* Animaciones suaves */
+}
+
+.social-icons a:hover {
+  color: #00d4ff; /* Azul brillante al pasar el cursor */
+  transform: scale(1.2); /* Aumenta ligeramente el tamaño */
+}
+
+
+/* 
+   PARTE INFERIOR DEL FOOTER (FOOTER-BOTTOM)
+
+Esta es la última línea del pie de página donde normalmente van cosas como
+"© 2025 Remolinos Tours - Todos los derechos reservados".
+*/
+.footer-bottom {
+  border-top: 1px solid #ffffff33; /* Línea semitransparente arriba */
+  margin-top: 40px; /* Espacio entre las secciones y esta parte */
+  padding-top: 20px; /* Espacio interno superior */
+  text-align: center; /* Centra el texto */
+  font-size: 14px; /* Tamaño pequeño */
+  color: #dbe8ff; /* Azul clarito */
+}

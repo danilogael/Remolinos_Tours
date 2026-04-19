@@ -1,0 +1,305 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN (AISLADA)
+   ========================================= */
+.products {
+    --color-principal: #0077c2;
+    --color-acento: #ff5722;
+    --color-texto: #333;
+    --color-gris: #666;
+    --fondo-suave: #f9f9f9;
+
+    /* QUITAMOS el fondo para que no se vea separado */
+    background: none;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+
+/* Reset interno: Solo afecta a los elementos de ofertas */
+.products *, 
+.products *::before, 
+.products *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+
+/* =========================================
+   2. TÍTULO DE LA SECCIÓN
+   ========================================= */
+.products .titulo-ofertas {
+    text-align: center;
+    font-size: 2.5rem; /* Tamaño moderado */
+    color: var(--color-texto);
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+.products .titulo-ofertas span {
+    color: var(--color-principal);
+}
+
+/* =========================================
+   3. CONTENEDOR FLEX (GRID)
+   ========================================= */
+.products .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;            /* Espacio entre tarjetas */
+    justify-content: center;
+    align-items: flex-start; /* IMPORTANTE: Evita que se estiren al abrir detalles */
+}
+
+/* =========================================
+   4. TARJETA (CARD) - DISEÑO COMPACTO
+   ========================================= */
+.products .box {
+    background: #fff;
+    width: 300px;        /* Ancho fijo para mantenerlas "chiquitas" */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.products .box:hover {
+    transform: translateY(-5px); /* Efecto flotante sutil */
+}
+
+/* Etiqueta de descuento */
+.products .box .discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--color-acento);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+/* =========================================
+   5. IMAGEN (CARRUSEL)
+   ========================================= */
+.products .box .img.carrusel {
+    height: 180px;       /* Altura reducida para que no sea enorme */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.products .box .carrusel-slide-wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+.products .box .carrusel-slide-wrapper img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botones del carrusel */
+.products .box .carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.7);
+    color: #333;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 5;
+    display: flex; /* Centrar icono */
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.products .box .carrusel-btn:hover {
+    background: var(--color-principal);
+    color: #fff;
+}
+
+.products .box .prev { left: 10px; }
+.products .box .next { right: 10px; }
+
+/* Iconos flotantes (Corazón/Share) */
+.products .box .icons {
+    position: absolute;
+    bottom: -50px; /* Oculto inicialmente */
+    left: 0;
+    width: 100%;
+    display: flex;
+    transition: bottom 0.3s ease;
+}
+
+.products .box:hover .icons {
+    bottom: 0; /* Aparece al hover */
+}
+
+.products .box .icons a {
+    width: 50%;
+    background: var(--color-principal);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.products .box .icons a:hover {
+    background: var(--color-texto);
+}
+
+/* =========================================
+   6. CONTENIDO (TEXTOS)
+   ========================================= */
+.products .box .content {
+    padding: 15px;
+    text-align: center;
+}
+
+.products .box .content h3 {
+    font-size: 1.2rem;
+    color: var(--color-texto);
+    margin-bottom: 5px;
+}
+
+.products .box .content .ubicacion {
+    font-size: 0.9rem;
+    color: var(--color-gris);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.products .box .content .ubicacion i {
+    color: var(--color-principal);
+    margin-right: 5px;
+}
+
+.products .box .content .categoria {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(0, 119, 194, 0.1);
+    color: var(--color-principal);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.products .box .content .rating {
+    color: #ffc107;
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.products .box .content .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2e7d32; /* Verde precio */
+}
+
+.products .box .content .price span {
+    font-size: 0.9rem;
+    color: var(--color-gris);
+    text-decoration: line-through;
+    margin-left: 5px;
+    font-weight: normal;
+}
+
+/* =========================================
+   7. DETALLES DESPLEGABLES (ACORDEÓN)
+   ========================================= */
+.products .box .extra-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background: var(--fondo-suave);
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: left; /* Texto alineado a la izquierda */
+}
+
+.products .box .extra-details.active {
+    max-height: 500px; /* Altura máxima suficiente */
+    padding: 15px;
+    border: 1px solid #eee;
+}
+
+.products .box .details-list {
+    list-style: none;
+}
+
+.products .box .details-list li {
+    font-size: 0.85rem;
+    color: var(--color-gris);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.products .box .details-list li i {
+    color: #2e7d32;
+    margin-right: 8px;
+    margin-top: 3px;
+}
+
+.products .box .details-note {
+    font-size: 0.8rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ccc;
+}
+
+/* =========================================
+   8. BOTONES DE ACCIÓN
+   ========================================= */
+.products .box .box-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.products .box .btn {
+    flex: 1; /* Ocupan el mismo ancho */
+    padding: 8px 0;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.products .box .reserve-btn {
+    background: var(--color-acento);
+    color: #fff;
+}
+
+.products .box .reserve-btn:hover {
+    background: #e64a19;
+}
+
+.products .box .details-btn {
+    background: transparent;
+    border: 1px solid var(--color-principal);
+    color: var(--color-principal);
+}
+
+.products .box .details-btn:hover {
+    background: var(--color-principal);
+    color: #fff;
+}

@@ -1,0 +1,391 @@
+/* ===========================================
+   ESTILO GLOBAL PREMIUM
+=========================================== */
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f5f7fb;
+    font-family: "Poppins", sans-serif;
+    transition: 0.3s ease-in-out;
+}
+
+.dark body {
+    background: #0f1115;
+}
+
+/* Container general */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1300px;
+    margin: 120px auto 60px auto;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+/* ===========================================
+   SIDEBAR GLASS / NEOMORFISMO
+=========================================== */
+
+.sidebar {
+    width: 260px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 20px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease-in-out;
+}
+
+.dark .sidebar {
+    background: rgba(25, 25, 25, 0.6);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Botones del menú */
+.sidebar .menu-btn {
+    width: 100%;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 22px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: 0.25s ease;
+    text-align: left;
+}
+
+.dark .sidebar .menu-btn {
+    color: #ddd;
+}
+
+.sidebar .menu-btn i {
+    font-size: 18px;
+    width: 20px;
+}
+
+/* Hover suave */
+.sidebar .menu-btn:hover {
+    background: #e9f3ff;
+    transform: translateX(4px);
+}
+
+.dark .sidebar .menu-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Activo premium */
+.menu-btn.active {
+    background: #1a73e8 !important;
+    color: white !important;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(26,115,232,0.4);
+    transform: translateX(4px);
+}
+
+/* ===========================================
+   CONTENIDO (CARD PREMIUM)
+=========================================== */
+
+.card {
+    flex: 1;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease;
+}
+
+.dark .card {
+    background: #1a1d22;
+    color: #ddd;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.subtitle {
+    color: #777;
+}
+
+.dark .subtitle {
+    color: #aaa;
+}
+
+/* Botones editar */
+.btn-edit {
+    padding: 10px 16px;
+    margin: 6px;
+    border: none;
+    background: #1a73e8;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-edit:hover {
+    background: #0f5ec4;
+    transform: scale(1.03);
+}
+
+/* Cerrar sesión */
+.btn-danger {
+    background: #e84545;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: #c73838;
+    transform: scale(1.05);
+}
+
+/* Esconder secciones */
+.hidden {
+    display: none !important;
+}
+
+/* ===========================================
+   MODO OSCURO AUTOMÁTICO
+=========================================== */
+
+body.dark {
+    background: #0f1115;
+    color: #eee;
+}
+
+/* Botón dark mode */
+.dark-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #1a1d22;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    transition: 0.25s ease;
+}
+
+.dark-toggle:hover {
+    transform: scale(1.1);
+}
+/* ===========================================
+   FORMULARIO DE CONTACTO PREMIUM
+=========================================== */
+
+#ayuda_contacto h2 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #1a1d22;
+}
+
+.dark #ayuda_contacto h2 {
+    color: #eee;
+}
+
+/* Ajuste del contenedor interno */
+#ayuda_contacto .container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 800px;
+}
+
+/* Inputs premium */
+#ayuda_contacto .form-control {
+    border: none;
+    background: #f0f4ff;
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 15px;
+    transition: 0.25s ease;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#ayuda_contacto .form-control:focus {
+    background: #e7efff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26,115,232,0.25);
+}
+
+.dark #ayuda_contacto .form-control {
+    background: #23272f;
+    color: #eee;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.dark #ayuda_contacto .form-control:focus {
+    background: #1c1f26;
+    box-shadow: 0 0 0 3px rgba(26,115,232,0.4);
+}
+
+/* Botón */
+#ayuda_contacto button {
+    background: #1a73e8;
+    border: none !important;
+    padding: 12px 40px;
+    font-size: 16px;
+    border-radius: 14px;
+    font-weight: 600;
+    color: white;
+    transition: 0.25s ease;
+    margin-top: 10px;
+}
+
+#ayuda_contacto button:hover {
+    background: #0f5ec4;
+    transform: scale(1.05);
+}
+
+.dark #ayuda_contacto button {
+    background: #2b74db;
+}
+/* ---------- INPUT CON OJO PROFESIONAL ---------- */
+.pass-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.pass-wrapper input {
+    width: 100%;
+    padding: 12px 45px 12px 14px;
+    border-radius: 10px;
+    border: 1.5px solid #c9c9c9;
+    background: #f5f6fa;
+    font-size: 15px;
+    transition: border-color .25s ease, background .25s ease;
+}
+
+.pass-wrapper input:focus {
+    border-color: #3a7afe;
+    background: #fff;
+}
+
+.dark .pass-wrapper input {
+    background: #222;
+    border-color: #444;
+    color: #eee;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+    opacity: 0.7;
+    transition: .2s ease;
+}
+
+.eye-icon:hover {
+    opacity: 1;
+    color: #111;
+}
+
+.dark .eye-icon {
+    color: #ccc;
+}
+
+/* ---------- BARRA DE SEGURIDAD PROFESIONAL ---------- */
+.strength-bar {
+    width: 100%;
+    height: 8px;
+    background: #dcdcdc;
+    border-radius: 50px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.dark .strength-bar {
+    background: #2c2c2c;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #d9534f, #f0ad4e, #5bc0de, #5cb85c);
+    transition: width .3s ease-in-out;
+}
+
+.strength-text {
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+.dark .strength-text {
+    color: #ddd;
+}
+.swal2-popup .swal2-input {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding-left: 0 !important;
+}
+/* ============================
+   CENTRADO ENTRE HEADER Y FOOTER
+============================ */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Aquí va la magia */
+.container {
+    flex: 1; /* toma el espacio entre header y footer */
+    display: flex;
+    justify-content: center;   /* centrar horizontal */
+    align-items: center;       /* centrar vertical */
+    gap: 40px;
+    padding: 20px;
+}
+
+/* Evitamos que el contenido se pegue al tope en pantallas pequeñas */
+.content, .sidebar {
+    align-self: center;
+}
+/* ESPACIADO PERFECTO ENTRE HEADER Y FOOTER */
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-top: 50px;     /* mismo espacio arriba */
+    padding-bottom: 50px;  /* mismo espacio abajo */
+
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
