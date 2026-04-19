@@ -2,48 +2,86 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-
-// Definir moneda por defecto si no existe en sesión
-if (!isset($_SESSION['currency'])) {
-    $_SESSION['currency'] = 'MXN';
-}
-$currentCurrency = $_SESSION['currency'];
 ?>
 
-<header>
-  <div class="logo-titulo">
-    <img src="/viaje/viaje/Viaje-APP/componentes/header/Logo.png" alt="Logo Remolinos Tours" width="100">
-  <a href="#" class="logo">Remolinos Tours <span>.</span></a>
-  </div>
+<header class="site-header" id="site-header">
+  <div class="header-inner">
 
-  <nav>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="/viaje/viaje/Viaje-APP/default.php">Listo para tu viaje</a></li>
-      <li><a href="/viaje/viaje/Viaje-APP/componentes/paquetes/paquete.php">Descubre</a></li>
-      <li><a href="/viaje/viaje/Viaje-APP/componentes/Planea/planea.php">Planea tu viaje</a></li>
-      <li><a href="/viaje/viaje/Viaje-APP/componentes/ofertas/ofertas.php">Ofertas</a></li>
-
-      <div id="google_translate_element" class="text-sm p-2">
+    <!-- LOGO -->
+    <div class="header-logo">
+      <a href="/Viaje-APP/default.php" class="logo-link">
+        <img src="/Viaje-APP/componentes/header/Logo.png" alt="Remolinos Tours" class="logo-img">
+        <span class="logo-text">Remolinos <span class="logo-dot">Tours</span></span>
+      </a>
     </div>
 
+    <!-- NAV DESKTOP -->
+    <nav class="header-nav" id="header-nav">
+      <ul class="nav-list">
+        <li><a href="/Viaje-APP/default.php" class="nav-link">Inicio</a></li>
+        <li><a href="/Viaje-APP/componentes/paquetes/paquete.php" class="nav-link">Descubre</a></li>
+        <li><a href="/Viaje-APP/componentes/Planea/planea.php" class="nav-link">Planea tu viaje</a></li>
+        <li><a href="/Viaje-APP/componentes/ofertas/ofertas.php" class="nav-link">Ofertas</a></li>
+      </ul>
+    </nav>
+
+    <!-- ACCIONES -->
+    <div class="header-actions">
       <?php if (isset($_SESSION['user_id'])): ?>
-        <li class="user-menu">
-          <div class="user-icon">
-            <i class="fas fa-user"></i>
-          </div>
-          <ul class="dropdown">
-            <li><a href="/viaje/viaje/Viaje-APP/componentes/ViewData/ViewData.php">Mi perfil</a></li>
-            <li><a href="/viaje/viaje/LoginAPI/login/logOut.php">Cerrar sesión</a></li>
+        <div class="user-menu-wrap">
+          <button class="user-btn" id="user-btn" aria-label="Menú usuario">
+            <i class="fas fa-user-circle"></i>
+            <span class="user-name">Mi cuenta</span>
+            <i class="fas fa-chevron-down user-chevron"></i>
+          </button>
+          <ul class="user-dropdown" id="user-dropdown">
+            <li>
+              <a href="/Viaje-APP/componentes/ViewData/ViewData.php">
+                <i class="fas fa-user"></i> Mi perfil
+              </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li>
+              <a href="/LoginAPI/login/logOut.php" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+              </a>
+            </li>
           </ul>
-        </li>
+        </div>
       <?php else: ?>
-        <li><a href="/viaje/viaje/Viaje-APP/componentes/iniciarsesion/sign.php">Iniciar sesión</a></li>
+        <a href="/Viaje-APP/componentes/iniciarsesion/sign.php" class="btn-signin">
+          <i class="fas fa-user"></i> Iniciar sesión
+        </a>
+        <a href="/Viaje-APP/componentes/paquetes/paquete.php" class="btn-reservar">
+          Reservar Ahora
+        </a>
+      <?php endif; ?>
+    </div>
+
+    <!-- HAMBURGUESA -->
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <!-- NAV MÓVIL -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul class="mobile-nav-list">
+      <li><a href="/Viaje-APP/default.php"><i class="fas fa-home"></i> Inicio</a></li>
+      <li><a href="/Viaje-APP/componentes/paquetes/paquete.php"><i class="fas fa-globe"></i> Descubre</a></li>
+      <li><a href="/Viaje-APP/componentes/Planea/planea.php"><i class="fas fa-map-marked-alt"></i> Planea tu viaje</a></li>
+      <li><a href="/Viaje-APP/componentes/ofertas/ofertas.php"><i class="fas fa-tag"></i> Ofertas</a></li>
+      <li class="mobile-divider"></li>
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <li><a href="/Viaje-APP/componentes/ViewData/ViewData.php"><i class="fas fa-user"></i> Mi perfil</a></li>
+        <li><a href="/LoginAPI/login/logOut.php"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+      <?php else: ?>
+        <li><a href="/Viaje-APP/componentes/iniciarsesion/sign.php" class="mobile-btn-signin"><i class="fas fa-user"></i> Iniciar sesión</a></li>
+        <li><a href="/Viaje-APP/componentes/paquetes/paquete.php" class="mobile-btn-reservar">Reservar Ahora</a></li>
       <?php endif; ?>
     </ul>
-  </nav>
+  </div>
 </header>
-
-<!-- JS -->
-<script src="/viaje/viaje/Viaje-APP/componentes/js/header.js"></script>
-<script src="/viaje/viaje/Viaje-APP/componentes/js/currency.js"></script>
-<script src="/viaje/viaje/Viaje-APP/assets/js/index.js"></script>

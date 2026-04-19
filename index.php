@@ -4,32 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remolinos Tours - Inicio</title>
-  <link rel="stylesheet" href="Agencia_Remolinos/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="Viaje-APP/componentes/header/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-
- <?php include __DIR__ . '/Viaje-APP/componentes/header/header.php'; ?>
-
-<header class="site-header">
-  <div class="header-inner">
-    <div class="logo">
-      <img src="/Agencia_Remolinos/imagenes/logo.png" alt="Remolinos Tours" onerror="this.style.display='none'">
-      <span>Remolinos Tours</span>
-    </div>
-    <nav>
-      <a href="#home" class="active">Inicio</a>
-      <a href="#destinos">Destinos</a>
-      <a href="#reservas">Reservas</a>
-    </nav>
-    <div class="header-actions">
-      <a href="#" class="btn-admin"><i class="fas fa-user-shield"></i> Admin</a>
-      <a href="#contact" class="btn-reservar">Reservar Ahora</a>
-    </div>
-  </div>
-</header>
+<!-- ══ HEADER ══ -->
+<?php include __DIR__ . "/Viaje-APP/componentes/header/header.php"; ?>
 
 <!-- ══ HERO ══ -->
 <section class="hero" id="home">
@@ -57,7 +39,7 @@
       <p class="label-sup">NUESTROS DESTINOS</p>
       <h2>Lugares que te Dejarán<br>Sin Aliento</h2>
     </div>
-    <a href="/componentes/paquetes/paquete.php" class="ver-todos">Ver todos los destinos <i class="fas fa-arrow-right"></i></a>
+    <a href="/Viaje-APP/componentes/paquetes/paquete.php" class="ver-todos">Ver todos los destinos <i class="fas fa-arrow-right"></i></a>
   </div>
   <div class="destinos-grid">
     <!-- Tarjeta grande -->
@@ -174,9 +156,7 @@
 <section class="reviews" id="reviews">
   <div class="reviews-inner">
     <div class="reviews-img-wrap">
-      <img src="/imagenes/persona1.jpg"
-           onerror="this.src='https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500'"
-           alt="María González">
+      <img src="assets/imagenes/persona1.jpg" onerror="this.src='https:images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500'"alt="María González">
       <div class="rev-badge">
         <span class="stars-rev">★★★★★</span>
         <strong>Caribe Mexicano Mágico</strong>
@@ -190,7 +170,7 @@
         REMOLINOS TOURS superó todas mis expectativas. El hotel era espectacular, los guías increíblemente conocedores y cada detalle estaba perfectamente organizado. Fue el viaje de mi vida y definitivamente volveré a reservar con ellos.
       </blockquote>
       <div class="rev-autor">
-        <img src="/imagenes/persona1.jpg"
+        <img src="assets/imagenes/persona1.jpg"
              onerror="this.src='https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800'"
              alt="María González">
         <div>
