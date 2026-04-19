@@ -4,253 +4,323 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remolinos Tours - Inicio</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="/componentes/estilos/header.css">
-  <link rel="stylesheet" href="/componentes/estilos/estilos_footer.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<script src="index.js"></script>
+  <link rel="stylesheet" href="Agencia_Remolinos/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/componentes/header/header.php"); ?>
 
-<section class="home" id="home">
-    <div class="content">
-        <h3><span>Remolinos</span> Tours</h3>
-        <span>Agencia de Viajes</span>
-        <p>Agencia de viajes hidrocalida que se interesa por hacer de tus viajes una experiencia inolvidable, brindando seguridad en tu compra!
-contamos con Registro nacional de turismo vigente!.</p>
-        <a href="/componentes/paquetes/paquete.php" class="btn">Descubre </a>
+
+ <?php include __DIR__ . '/Viaje-APP/componentes/header/header.php'; ?>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="/Agencia_Remolinos/imagenes/logo.png" alt="Remolinos Tours" onerror="this.style.display='none'">
+      <span>Remolinos Tours</span>
     </div>
-</section>
-    
-<section class="about" id="about">
-    <h1 class="heading"><span>Conocenos</span></h1>
-<div class="row">
-    <div class="video-container">
-        <img src="/imagenes/barco.jpg" alt="Barco">
-        <h3>Remolinos Tours</h3>
+    <nav>
+      <a href="#home" class="active">Inicio</a>
+      <a href="#destinos">Destinos</a>
+      <a href="#reservas">Reservas</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#" class="btn-admin"><i class="fas fa-user-shield"></i> Admin</a>
+      <a href="#contact" class="btn-reservar">Reservar Ahora</a>
     </div>
-    <div class="content">
-        <h3>Por qué elegirnos?</h3>
-        <p>En Remolinos Tours buscamos que cada viaje se sienta ligero y sin complicaciones. Ofrecemos opciones accesibles, información clara y acompañamiento en todo momento, para que las personas disfruten más y se preocupen menos. Nuestro objetivo es que cada experiencia se convierta en un buen recuerdo y no solo en un simple traslado..</p>
-        
-        <a href="#" class="btn">leer más </a>
-</div>
-</section>
-<section class="icons-container">
-    <div class="icons">
-       <img src="/imagenes/seguro_viaje.png" alt="">
-        <div class="info">
-            <h3>Viaje Seguro</h3>
-            <span>Contamos con seguro de viaje.</span>
-        </div>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Descubre el Mundo con<br><span>REMOLINOS TOURS</span></h1>
+    <p>Experiencias únicas que transforman viajes en recuerdos inolvidables.<br>Más de 5,000 viajeros felices nos respaldan.</p>
+    <div class="hero-btns">
+      <a href="#destinos" class="btn-primary">Explorar Destinos <i class="fas fa-arrow-right"></i></a>
+      <a href="#contact" class="btn-ghost">Reservar Ahora</a>
     </div>
-    <div class="icons">
-       <img src="/imagenes/devolucion.png" alt="">
-        <div class="info">
-            <h3>Devolucion/Garantia  </h3>
-            <span>Cancelacion flexible, Garantia de reembolso</span>
-        </div>
-    </div>
-    <div class="icons">
-       <img src="/imagenes/support-removebg-preview.png" alt="">
-        <div class="info">
-            <h3> Soporte 24/7</h3>
-            <span>Estamos aquí para ayudarte</span>
-        </div>
-</div>
-<div class="icons">
-       <img src="/imagenes/metodos_pago.png" alt="">
-        <div class="info">
-            <h3>Pagos/ Metodos de pago </h3>
-            <span>Contamos con diversos métodos de pago seguros</span>
-        </div>
-</div>
-    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><strong>5,000+</strong><span>Viajeros</span></div>
+    <div class="stat"><strong>50+</strong><span>Destinos</span></div>
+    <div class="stat"><strong>15 Años</strong><span>Experiencia</span></div>
+  </div>
+  <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
 </section>
 
-<section class="products" id="products">
-    <h1 class="heading"><span>Ofertas</span></h1>
-
-    <div class="promo-box" style="
-        width:90%;
-        max-width:900px;
-        margin:0 auto;
-        padding:0;
-        border:1px solid #dcdcdc;
-        border-radius:12px;
-        background:#fff;
-        display:flex;
-        justify-content:space-between;
-        overflow:hidden;
-        margin-top:30px;
-    ">
-        
-        <!-- imagen -->
-        <div style="width:50%; height:220px; overflow:hidden;">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-            style="width:100%; height:100%; object-fit:cover;">
-        </div>
-
-        <!-- texto + botón -->
-        <div style="width:50%; padding:25px; text-align:left;">
-            
-            <h2 style="
-                font-size:2rem;
-                font-weight:600;
-                margin-bottom:10px;
-                color:#222;
-            ">
-                Promociones Especiales
-            </h2>
-
-            <p style="
-                font-size:1.5rem;
-                color:#555;
-                margin-bottom:25px;
-                line-height:1.5;
-            ">
-                Descubre destinos con precios únicos.<br>
-                Viaja sin complicarte.
-            </p>
-
-            <a href="/componentes/ofertas/ofertas.php"
-style="
-    display:inline-block;
-    padding:14px 38px;
-    border-radius:28px;
-    background:#066cff;
-    color:#fff;
-    text-decoration:none;
-    font-size:1.05rem;
-    font-weight:500;
-">
-    Ver Ofertas
-</a>
-
-
-        </div>
+<!-- ══ DESTINOS ══ -->
+<section class="destinos" id="destinos">
+  <div class="destinos-header">
+    <div>
+      <p class="label-sup">NUESTROS DESTINOS</p>
+      <h2>Lugares que te Dejarán<br>Sin Aliento</h2>
     </div>
+    <a href="/componentes/paquetes/paquete.php" class="ver-todos">Ver todos los destinos <i class="fas fa-arrow-right"></i></a>
+  </div>
+  <div class="destinos-grid">
+    <!-- Tarjeta grande -->
+    <div class="dest-card dest-grande">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="Caribe Mexicano">
+      <div class="dest-overlay">
+        <span class="badge-popular">POPULAR</span>
+        <h3>Caribe Mexicano Mágico</h3>
+        <p>Cancún, México</p>
+        <div class="dest-footer">
+          <span class="precio">Desde<br><strong>$1299</strong></span>
+          <a href="#" class="btn-detalle">Ver Detalles</a>
+        </div>
+      </div>
+    </div>
+    <!-- Col derecha -->
+    <div class="destinos-col">
+      <div class="dest-card dest-chica">
+        <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600" alt="Perú">
+        <div class="dest-overlay">
+          <h3>Perú Místico</h3>
+          <p>Cusco &amp; Machu Picchu, Perú</p>
+          <div class="dest-footer">
+            <strong class="precio">$1850</strong>
+            <a href="#" class="btn-detalle">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card dest-chica">
+        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600" alt="Patagonia">
+        <div class="dest-overlay">
+          <h3>Patagonia Salvaje</h3>
+          <p>Torres del Paine, Chile</p>
+          <div class="dest-footer">
+            <strong class="precio">$2200</strong>
+            <a href="#" class="btn-detalle">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card-cta">
+        <div class="cta-icon"><i class="fas fa-compass"></i></div>
+        <h4>¿No encuentras tu destino?</h4>
+        <p>Creamos paquetes personalizados para ti</p>
+        <a href="#contact" class="btn-cta-blanco">Ver Todos</a>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ══ STATS BAR ══ -->
+<section class="stats-bar">
+  <div class="stat-item">
+    <i class="fas fa-smile"></i>
+    <strong>5,000+</strong>
+    <span>Viajeros Felices</span>
+  </div>
+  <div class="stat-item">
+    <i class="fas fa-map"></i>
+    <strong>50+</strong>
+    <span>Destinos Disponibles</span>
+  </div>
+  <div class="stat-item">
+    <i class="fas fa-heart"></i>
+    <strong>98%</strong>
+    <span>Satisfacción del Cliente</span>
+  </div>
+  <div class="stat-item">
+    <i class="fas fa-award"></i>
+    <strong>15</strong>
+    <span>Años de Experiencia</span>
+  </div>
+</section>
 
+<!-- ══ POR QUÉ ELEGIRNOS ══ -->
+<section class="porque" id="about">
+  <p class="label-sup centrado">POR QUÉ ELEGIRNOS</p>
+  <h2 class="porque-titulo">Tu Viaje, Nuestra Pasión</h2>
+  <p class="porque-sub">Llevamos más de 15 años convirtiendo sueños en aventuras reales.<br>Cada detalle importa, cada momento cuenta.</p>
+  <div class="porque-grid">
+    <div class="porque-card destacado">
+      <div class="ico-box activo"><i class="fas fa-headset"></i></div>
+      <h4>Atención 24/7</h4>
+      <p>Nuestro equipo está disponible en todo momento para resolver cualquier inconveniente durante tu viaje.</p>
+    </div>
+    <div class="porque-card">
+      <div class="ico-box"><i class="fas fa-shield-alt"></i></div>
+      <h4>Viajes 100% Seguros</h4>
+      <p>Todos nuestros paquetes incluyen seguro de viaje completo y asistencia médica internacional 24/7.</p>
+    </div>
+    <div class="porque-card">
+      <div class="ico-box"><i class="fas fa-star"></i></div>
+      <h4>Experiencias Únicas</h4>
+      <p>Diseñamos itinerarios exclusivos que van más allá del turismo convencional para crear memorias únicas.</p>
+    </div>
+    <div class="porque-card">
+      <div class="ico-box"><i class="fas fa-tag"></i></div>
+      <h4>Mejor Precio Garantizado</h4>
+      <p>Si encuentras el mismo paquete más barato, igualamos el precio y te damos un descuento adicional.</p>
+    </div>
+    <div class="porque-card">
+      <div class="ico-box"><i class="fas fa-map-marker-alt"></i></div>
+      <h4>Guías Expertos Locales</h4>
+      <p>Nuestros guías son nativos del destino con profundo conocimiento cultural e histórico.</p>
+    </div>
+    <div class="porque-card">
+      <div class="ico-box"><i class="fas fa-thumbs-up"></i></div>
+      <h4>98% Satisfacción</h4>
+      <p>Más de 5,000 viajeros satisfechos avalan nuestra calidad y compromiso con cada experiencia.</p>
+    </div>
+  </div>
+</section>
 
+<!-- ══ RESEÑAS ══ -->
 <section class="reviews" id="reviews">
-    <h1 class="heading"><span>Lo que dicen nuestros viajeros</span></h1>
-    <div class="box-container">
-        
-        <div class="box">
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <p>
-                "El paquete a Cancún fue increíble. El hotel 'Todo Incluido' superó nuestras expectativas y los traslados fueron puntuales. La atención del equipo de Remolinos Tours es de 5 estrellas. ¡Volveremos a viajar con ustedes!"
-            </p>
-            <div class="user">
-                <img src="/imagenes/persona1.jpg" alt="Foto de María P.">
-                <div class="user-info"> 
-                    <h3>María P.</h3>
-                    <span>Viaje a Cancún</span>
-                </div>
-            </div> 
-            <span class="fas fa-quote-right"></span>
-        </div>
-        
-        <div class="box">
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i> </div>
-            <p>
-                "La ruta por la Toscana que nos armaron fue mágica. Hubo un pequeño retraso con el tren en Florencia, pero el soporte 24/7 lo solucionó al instante. ¡Servicio impecable y destinos soñados!"
-            </p>
-            <div class="user">
-                <img src="/imagenes/persona2.jpg" alt="Foto de Raúl G.">
-                <div class="user-info"> 
-                    <h3>Raúl G.</h3>
-                    <span>Tour por Italia</span>
-                </div>
-            </div> 
-            <span class="fas fa-quote-right"></span>
-        </div>
-        
-        <div class="box">
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i> </div>
-            <p>
-                "Mi primer viaje a Japón fue inolvidable. El itinerario estaba muy bien organizado, aunque nos hubiera gustado tener más tiempo libre en Kioto. Los guías locales que nos recomendaron eran expertos."
-            </p>
-            <div class="user">
-                <img src="/imagenes/persona3.jpg" alt="Foto de Susana M.">
-                <div class="user-info"> 
-                    <h3>Susana M.</h3>
-                    <span>Viaje a Japón</span>
-                </div>
-            </div> 
-            <span class="fas fa-quote-right"></span>
-        </div>
-        
-        <div class="box">
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-            <p>
-                "¡El mejor fin de semana en Puerto Vallarta! El precio de la oferta era inigualable y todo fue transparente. Desde el vuelo hasta el check-out, cero problemas. ¡Muy recomendable Remolinos Tours!"
-            </p>
-            <div class="user">
-                <img src="/imagenes/persona4.jpg" alt="Foto de Jorge R.">
-                <div class="user-info"> 
-                    <h3>Jorge R.</h3>
-                    <span>Escapada a Vallarta</span>
-                </div>
-            </div> 
-            <span class="fas fa-quote-right"></span>
-        </div>
-        
+  <div class="reviews-inner">
+    <div class="reviews-img-wrap">
+      <img src="/imagenes/persona1.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500'"
+           alt="María González">
+      <div class="rev-badge">
+        <span class="stars-rev">★★★★★</span>
+        <strong>Caribe Mexicano Mágico</strong>
+      </div>
     </div>
-    <center>
-        <a href="/componentes/reseñas/reseñas.php" class="btn">
-            Ver todas las Reseñas
-        </a>
-    </center>
+    <div class="reviews-text">
+      <p class="label-sup">(EXPERIENCIAS REALES)</p>
+      <h2>Lo Que Dicen<br><span>Nuestros Viajeros</span></h2>
+      <blockquote>
+        <i class="fas fa-quote-left"></i>
+        REMOLINOS TOURS superó todas mis expectativas. El hotel era espectacular, los guías increíblemente conocedores y cada detalle estaba perfectamente organizado. Fue el viaje de mi vida y definitivamente volveré a reservar con ellos.
+      </blockquote>
+      <div class="rev-autor">
+        <img src="/imagenes/persona1.jpg"
+             onerror="this.src='https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800'"
+             alt="María González">
+        <div>
+          <strong>— María González</strong>
+          <span>Ciudad de México</span>
+        </div>
+      </div>
+      <div class="rev-nav">
+        <button class="rev-btn"><i class="fas fa-arrow-left"></i></button>
+        <button class="rev-btn activo"><i class="fas fa-arrow-right"></i></button>
+        <div class="rev-dots">
+          <span class="dot activo"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ══ CTA BANNER ══ -->
+<section class="cta-banner">
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <span class="cta-label">OFERTA ESPECIAL</span>
+    <h2>COMIENZA TU AVENTURA<br>HOY</h2>
+    <p>Reserva ahora y obtén <strong>15% de descuento</strong><br>en tu primer viaje con nosotros</p>
+    <a href="#contact" class="btn-cta-main"><i class="fas fa-shopping-bag"></i> RESERVAR AHORA <i class="fas fa-external-link-alt"></i></a>
+  </div>
+</section>
+
+<!-- ══ CONTACTO ══ -->
 <section class="contact" id="contact">
-
-    <h1 class="heading"><span>contactanos</span> </h1>
-
-    <div class="row">
-
-        <form id="formContacto">
-            <input type="text" name="nombre" placeholder="nombre completo" class="box">
-            <input type="email" name="correo" placeholder="correo electrónico" class="box">
-            <input type="tel" name="numero" placeholder="número" class="box">
-            <textarea name="mensaje" placeholder="mensaje" class="box" cols="30" rows="10"></textarea>
-            <input type="submit" value="enviar mensaje" class="btn">
-        </form>
-
-        <div class="image"></div>
-
+  <p class="label-sup centrado">CONTÁCTANOS</p>
+  <h2 class="contact-titulo">Planifica Tu Próxima Aventura</h2>
+  <p class="contact-sub">Nuestros expertos en viajes están listos para ayudarte a crear la experiencia perfecta.</p>
+  <div class="contact-grid">
+    <div class="contact-form-wrap">
+      <form id="formContacto">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" placeholder="Tu nombre" class="finput">
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="tu@email.com" class="finput">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" placeholder="+52 55 0000 0000" class="finput">
+          </div>
+          <div class="form-group">
+            <label>Destino de interés</label>
+            <select class="finput">
+              <option>Seleccionar destino</option>
+              <option>Caribe Mexicano</option>
+              <option>Perú</option>
+              <option>Patagonia</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Fecha preferida de viaje</label>
+          <input type="date" class="finput">
+        </div>
+        <div class="form-group">
+          <label>Mensaje <span class="char-count">(0/500)</span></label>
+          <textarea class="finput" rows="4" placeholder="Cuéntanos sobre tu viaje ideal..." maxlength="500"
+            oninput="this.previousElementSibling.querySelector('.char-count').textContent='('+this.value.length+'/500)'"></textarea>
+        </div>
+        <button type="submit" class="btn-enviar"><i class="fas fa-paper-plane"></i> Enviar Consulta</button>
+      </form>
     </div>
-
+    <div class="contact-info-wrap">
+      <div class="mapa-placeholder">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.661235874!2d-102.2915!3d21.8818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDUyJzU0LjUiTiAxMDLCsDE3JzI5LjQiVw!5e0!3m2!1ses!2smx!4v1680000000000!5m2!1ses!2smx"
+          width="100%" height="240" style="border:0;border-radius:1.2rem;" allowfullscreen loading="lazy">
+        </iframe>
+      </div>
+      <div class="contact-datos">
+        <div class="dato"><span class="dato-ico"><i class="fas fa-map-marker-alt"></i></span><div><small>Dirección</small><p>Aguascalientes, Ags. México</p></div></div>
+        <div class="dato"><span class="dato-ico"><i class="fas fa-phone"></i></span><div><small>Teléfono</small><p>+52 449 000 0000</p></div></div>
+        <div class="dato"><span class="dato-ico"><i class="fas fa-envelope"></i></span><div><small>Email</small><p>info@remolinostours.com</p></div></div>
+        <div class="dato"><span class="dato-ico"><i class="fas fa-clock"></i></span><div><small>Horario</small><p>Lun–Vie 9:00–18:00 | Sáb 10:00–14:00</p></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Remolinos Tours</div>
+      <p>Transformamos sueños en aventuras reales. Más de 15 años creando experiencias de viaje únicas e inolvidables.</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Tu correo electrónico">
+        <button><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Destinos</h5>
+        <a href="#">América</a><a href="#">Europa</a><a href="#">Asia</a><a href="#">África</a>
+      </div>
+      <div class="footer-col">
+        <h5>Servicios</h5>
+        <a href="#">Paquetes</a><a href="#">Personalizado</a><a href="#">Grupos</a><a href="#">Luna de Miel</a>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <a href="#">Nosotros</a><a href="#">Blog</a><a href="#">Carreras</a><a href="#">Prensa</a>
+      </div>
+      <div class="footer-col">
+        <h5>Soporte</h5>
+        <a href="#">FAQ</a><a href="#">Términos</a><a href="#">Privacidad</a><a href="#">Contacto</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Remolinos Tours. Todos los derechos reservados.</p>
+  </div>
+</footer>
 
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/componentes/footer/footer.php"); ?>
 <script src="index.js"></script>
 </body>
 </html>
