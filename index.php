@@ -6,6 +6,7 @@
   <title>Remolinos Tours - Inicio</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="Viaje-APP/componentes/header/header.css">
+   <link rel="stylesheet" href="Viaje-APP/componentes/footer/footer.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
@@ -34,59 +35,51 @@
 
 <!-- ══ DESTINOS ══ -->
 <section class="destinos" id="destinos">
-  <div class="destinos-header">
-    <div>
-      <p class="label-sup">NUESTROS DESTINOS</p>
-      <h2>Lugares que te Dejarán<br>Sin Aliento</h2>
-    </div>
-    <a href="/Viaje-APP/componentes/paquetes/paquete.php" class="ver-todos">Ver todos los destinos <i class="fas fa-arrow-right"></i></a>
-  </div>
-  <div class="destinos-grid">
-    <!-- Tarjeta grande -->
-    <div class="dest-card dest-grande">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="Caribe Mexicano">
-      <div class="dest-overlay">
-        <span class="badge-popular">POPULAR</span>
-        <h3>Caribe Mexicano Mágico</h3>
-        <p>Cancún, México</p>
-        <div class="dest-footer">
-          <span class="precio">Desde<br><strong>$1299</strong></span>
-          <a href="#" class="btn-detalle">Ver Detalles</a>
-        </div>
-      </div>
-    </div>
-    <!-- Col derecha -->
-    <div class="destinos-col">
-      <div class="dest-card dest-chica">
-        <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600" alt="Perú">
-        <div class="dest-overlay">
-          <h3>Perú Místico</h3>
-          <p>Cusco &amp; Machu Picchu, Perú</p>
-          <div class="dest-footer">
-            <strong class="precio">$1850</strong>
-            <a href="#" class="btn-detalle">Ver Detalles</a>
-          </div>
-        </div>
-      </div>
-      <div class="dest-card dest-chica">
-        <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600" alt="Patagonia">
-        <div class="dest-overlay">
-          <h3>Patagonia Salvaje</h3>
-          <p>Torres del Paine, Chile</p>
-          <div class="dest-footer">
-            <strong class="precio">$2200</strong>
-            <a href="#" class="btn-detalle">Ver Detalles</a>
-          </div>
-        </div>
-      </div>
-      <div class="dest-card-cta">
-        <div class="cta-icon"><i class="fas fa-compass"></i></div>
-        <h4>¿No encuentras tu destino?</h4>
-        <p>Creamos paquetes personalizados para ti</p>
-        <a href="#contact" class="btn-cta-blanco">Ver Todos</a>
+<div class="destinos-grid">
+  <div class="dest-card">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="Caribe Mexicano">
+    <div class="dest-overlay">
+      <span class="badge-popular">POPULAR</span>
+      <h3>Caribe Mexicano Mágico</h3>
+      <p>Cancún, México</p>
+      <div class="dest-footer">
+        <span class="precio">Desde<br><strong>$1299</strong></span>
+        <a href="#" class="btn-detalle">Ver Detalles</a>
       </div>
     </div>
   </div>
+
+  <div class="dest-card">
+    <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600" alt="Perú">
+    <div class="dest-overlay">
+      <h3>Perú Místico</h3>
+      <p>Cusco & Machu Picchu, Perú</p>
+      <div class="dest-footer">
+        <strong class="precio">$1850</strong>
+        <a href="#" class="btn-detalle">Ver Detalles</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dest-card">
+    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600" alt="Patagonia">
+    <div class="dest-overlay">
+      <h3>Patagonia Salvaje</h3>
+      <p>Torres del Paine, Chile</p>
+      <div class="dest-footer">
+        <strong class="precio">$2200</strong>
+        <a href="#" class="btn-detalle">Ver Detalles</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dest-card-cta">
+    <div class="cta-icon"><i class="fas fa-compass"></i></div>
+    <h4>¿No encuentras tu destino?</h4>
+    <p>Creamos paquetes personalizados para ti</p>
+    <a href="#contact" class="btn-cta-blanco">Ver Todos</a>
+  </div>
+</div>
 </section>
 
 <!-- ══ STATS BAR ══ -->
@@ -198,7 +191,7 @@
   <div class="cta-content">
     <span class="cta-label">OFERTA ESPECIAL</span>
     <h2>COMIENZA TU AVENTURA<br>HOY</h2>
-    <p>Reserva ahora y obtén <strong>15% de descuento</strong><br>en tu primer viaje con nosotros</p>
+    <p>Reserva ahora y obtén <strong>10% de descuento</strong><br>en tu primer viaje con nosotros</p>
     <a href="#contact" class="btn-cta-main"><i class="fas fa-shopping-bag"></i> RESERVAR AHORA <i class="fas fa-external-link-alt"></i></a>
   </div>
 </section>
@@ -266,40 +259,7 @@
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo">Remolinos Tours</div>
-      <p>Transformamos sueños en aventuras reales. Más de 15 años creando experiencias de viaje únicas e inolvidables.</p>
-      <div class="footer-newsletter">
-        <input type="email" placeholder="Tu correo electrónico">
-        <button><i class="fas fa-paper-plane"></i></button>
-      </div>
-    </div>
-    <div class="footer-links">
-      <div class="footer-col">
-        <h5>Destinos</h5>
-        <a href="#">América</a><a href="#">Europa</a><a href="#">Asia</a><a href="#">África</a>
-      </div>
-      <div class="footer-col">
-        <h5>Servicios</h5>
-        <a href="#">Paquetes</a><a href="#">Personalizado</a><a href="#">Grupos</a><a href="#">Luna de Miel</a>
-      </div>
-      <div class="footer-col">
-        <h5>Empresa</h5>
-        <a href="#">Nosotros</a><a href="#">Blog</a><a href="#">Carreras</a><a href="#">Prensa</a>
-      </div>
-      <div class="footer-col">
-        <h5>Soporte</h5>
-        <a href="#">FAQ</a><a href="#">Términos</a><a href="#">Privacidad</a><a href="#">Contacto</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 Remolinos Tours. Todos los derechos reservados.</p>
-  </div>
-</footer>
+<?php include __DIR__ . "/Viaje-APP/componentes/footer/footer.php"; ?>
 
 <script src="index.js"></script>
 </body>

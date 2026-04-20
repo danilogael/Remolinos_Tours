@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- LOGO -->
     <div class="header-logo">
       <a href="/Viaje-APP/default.php" class="logo-link">
-        <img src="/Viaje-APP/componentes/header/Logo.png" alt="Remolinos Tours" class="logo-img">
+        <img src="Logo.png" alt="Remolinos Tours" class="logo-img">
         <span class="logo-text">Remolinos <span class="logo-dot">Tours</span></span>
       </a>
     </div>
@@ -19,8 +19,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav class="header-nav" id="header-nav">
       <ul class="nav-list">
         <li><a href="/Viaje-APP/default.php" class="nav-link">Inicio</a></li>
-        <li><a href="/Viaje-APP/componentes/paquetes/paquete.php" class="nav-link">Descubre</a></li>
-        <li><a href="/Viaje-APP/componentes/Planea/planea.php" class="nav-link">Planea tu viaje</a></li>
+        <li><a href="/Viaje-APP/componentes/paquetes/paquete.php" class="nav-link">Destinos</a></li>
+        <li><a href="/Viaje-APP/componentes/Planea/planea.php" class="nav-link">Reserva</a></li>
         <li><a href="/Viaje-APP/componentes/ofertas/ofertas.php" class="nav-link">Ofertas</a></li>
       </ul>
     </nav>
