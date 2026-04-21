@@ -19,9 +19,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav class="header-nav" id="header-nav">
       <ul class="nav-list">
         <li><a href="/Viaje-APP/default.php" class="nav-link">Inicio</a></li>
-        <li><a href="/Viaje-APP/componentes/paquetes/paquete.php" class="nav-link">Destinos</a></li>
-        <li><a href="/Viaje-APP/componentes/Planea/planea.php" class="nav-link">Reserva</a></li>
-        <li><a href="/Viaje-APP/componentes/ofertas/ofertas.php" class="nav-link">Ofertas</a></li>
+        <li><a href="/Viaje-APP/Destinos/destinos.php" class="nav-link">Destinos</a></li>
+        <li><a href="/Viaje-APP/Planea/planea.php" class="nav-link">Reserva</a></li>
+        <li><a href="/Viaje-APP/ofertas/ofertas.php" class="nav-link">Ofertas</a></li>
       </ul>
     </nav>
 

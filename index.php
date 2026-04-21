@@ -35,51 +35,61 @@
 
 <!-- ══ DESTINOS ══ -->
 <section class="destinos" id="destinos">
-<div class="destinos-grid">
-  <div class="dest-card">
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="Caribe Mexicano">
-    <div class="dest-overlay">
-      <span class="badge-popular">POPULAR</span>
-      <h3>Caribe Mexicano Mágico</h3>
-      <p>Cancún, México</p>
-      <div class="dest-footer">
-        <span class="precio">Desde<br><strong>$1299</strong></span>
-        <a href="#" class="btn-detalle">Ver Detalles</a>
-      </div>
+  <div class="destinos-header">
+    <div class="header-content">
+      <span class="sub-label">Nuestros Destinos</span>
+      <h2>Lugares que te Dejarán<br>Sin Aliento</h2>
     </div>
+    <a href="#" class="ver-todos">Ver todos los destinos <i class="fas fa-arrow-right"></i></a>
   </div>
 
-  <div class="dest-card">
-    <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600" alt="Perú">
-    <div class="dest-overlay">
-      <h3>Perú Místico</h3>
-      <p>Cusco & Machu Picchu, Perú</p>
-      <div class="dest-footer">
-        <strong class="precio">$1850</strong>
-        <a href="#" class="btn-detalle">Ver Detalles</a>
+  <div class="destinos-grid">
+    
+    <div class="dest-card card-featured">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="Caribe Mexicano">
+      <div class="dest-overlay">
+        <span class="badge-popular">POPULAR</span>
+        <h3>Caribe Mexicano Mágico</h3>
+        <p>Cancún, México</p>
+        <div class="dest-footer">
+          <span class="precio">Desde<br><strong>$1299</strong></span>
+          <a href="#" class="btn-detalle">Ver Detalles</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="dest-card">
-    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600" alt="Patagonia">
-    <div class="dest-overlay">
-      <h3>Patagonia Salvaje</h3>
-      <p>Torres del Paine, Chile</p>
-      <div class="dest-footer">
-        <strong class="precio">$2200</strong>
-        <a href="#" class="btn-detalle">Ver Detalles</a>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=600" alt="Perú">
+      <div class="dest-overlay">
+        <h3>Perú Místico</h3>
+        <p>Cusco & Machu Picchu, Perú</p>
+        <div class="dest-footer">
+          <strong class="precio">$1850</strong>
+          <a href="#" class="btn-detalle">Ver Detalles</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="dest-card-cta">
-    <div class="cta-icon"><i class="fas fa-compass"></i></div>
-    <h4>¿No encuentras tu destino?</h4>
-    <p>Creamos paquetes personalizados para ti</p>
-    <a href="#contact" class="btn-cta-blanco">Ver Todos</a>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600" alt="Patagonia">
+      <div class="dest-overlay">
+        <h3>Patagonia Salvaje</h3>
+        <p>Torres del Paine, Chile</p>
+        <div class="dest-footer">
+          <strong class="precio">$2200</strong>
+          <a href="#" class="btn-detalle">Ver Detalles</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="dest-card-cta">
+      <div class="cta-icon"><i class="fas fa-compass"></i></div>
+      <h4>¿No encuentras tu destino?</h4>
+      <p>Creamos paquetes personalizados para ti</p>
+      <a href="#contact" class="btn-cta-blanco">Ver Todos</a>
+    </div>
+
   </div>
-</div>
 </section>
 
 <!-- ══ STATS BAR ══ -->
