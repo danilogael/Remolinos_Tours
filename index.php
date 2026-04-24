@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remolinos Tours - Inicio</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="Viaje-APP/componentes/header/header.css">
-   <link rel="stylesheet" href="Viaje-APP/componentes/footer/footer.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome y Google Fonts ya los carga header.php automáticamente -->
 </head>
 <body>
+
 <!-- ══ HEADER ══ -->
-<?php include __DIR__ . "/Viaje-APP/componentes/header/header.php"; ?>
+<?php include __DIR__ . "/componentes/header/header.php"; ?>
 
 <!-- ══ HERO ══ -->
 <section class="hero" id="home">
@@ -40,11 +38,11 @@
       <span class="sub-label">Nuestros Destinos</span>
       <h2>Lugares que te Dejarán<br>Sin Aliento</h2>
     </div>
-    <a href="#" class="ver-todos">Ver todos los destinos <i class="fas fa-arrow-right"></i></a>
+    <a href="componentes/Destinos/destinos.php" class="ver-todos">Ver todos los destinos <i class="fas fa-arrow-right"></i></a>
   </div>
 
   <div class="destinos-grid">
-    
+
     <div class="dest-card card-featured">
       <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800" alt="Caribe Mexicano">
       <div class="dest-overlay">
@@ -86,7 +84,7 @@
       <div class="cta-icon"><i class="fas fa-compass"></i></div>
       <h4>¿No encuentras tu destino?</h4>
       <p>Creamos paquetes personalizados para ti</p>
-      <a href="#contact" class="btn-cta-blanco">Ver Todos</a>
+      <a href="/componentes/Contacto/contacto.php" class="btn-cta-blanco">Ver Todos</a>
     </div>
 
   </div>
@@ -159,7 +157,7 @@
 <section class="reviews" id="reviews">
   <div class="reviews-inner">
     <div class="reviews-img-wrap">
-      <img src="assets/imagenes/persona1.jpg" onerror="this.src='https:images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500'"alt="María González">
+      <img src="assets/imagenes/persona1.jpg" onerror="this.src='https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500'" alt="María González">
       <div class="rev-badge">
         <span class="stars-rev">★★★★★</span>
         <strong>Caribe Mexicano Mágico</strong>
@@ -269,7 +267,7 @@
   </div>
 </section>
 
-<?php include __DIR__ . "/Viaje-APP/componentes/footer/footer.php"; ?>
+<?php include __DIR__ . "/componentes/footer/footer.php"; ?>
 
 <script src="index.js"></script>
 </body>

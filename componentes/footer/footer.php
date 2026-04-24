@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/Agencia_Remolinos/componentes/footer/footer.css">
+
 <footer>
   <div class="footer-container">
     <!-- SECCIÓN 1: Información principal -->
@@ -9,22 +11,19 @@
         <a href="https://www.facebook.com/share/1CsmFYrQYp/" target="_blank">
           <i class="fab fa-facebook-f"></i>
         </a>
-
         <a href="https://www.instagram.com/remolinostours.ags/?hl=es-la" target="_blank">
           <i class="fab fa-instagram"></i>
         </a>
-
         <a href="mailto:remolinostours@gmail.com">
           <i class="fas fa-envelope"></i>
         </a>
-
         <a href="https://www.tiktok.com/@remolinostours200212" target="_blank">
           <i class="fab fa-tiktok"></i>
         </a>
       </div>
     </div>
 
- <!-- Sección Servicios -->
+    <!-- Sección Servicios -->
     <div class="footer-section">
       <h3>Servicios</h3>
       <ul>
@@ -37,8 +36,7 @@
       </ul>
     </div>
 
- 
-<!-- Sección Ayuda -->
+    <!-- Sección Ayuda -->
     <div class="footer-section">
       <h3>Ayuda</h3>
       <ul>
@@ -49,7 +47,7 @@
       </ul>
     </div>
 
-   <!-- Sección Descubre -->
+    <!-- Sección Descubre -->
     <div class="footer-section">
       <h3>Descubre</h3>
       <ul>
@@ -59,8 +57,6 @@
         <li><a href="viaje/Viaje-APP/componentes/footer/descubre/guias.php">Guías de viaje</a></li>
       </ul>
     </div>
-
-  </div>
 
   </div>
 

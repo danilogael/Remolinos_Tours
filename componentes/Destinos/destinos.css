@@ -1,0 +1,403 @@
+/* ============================================================
+   destinos.css — Página de destinos
+   Scoped en .destinos-page y .dest-* — no toca header/footer
+   ============================================================ */
+
+/* ── Variables ────────────────────────────────────────────── */
+.destinos-page {
+    --d-blue:       #1a56db;
+    --d-blue-dark:  #0f3580;
+    --d-blue-soft:  #ebf4ff;
+    --d-text:       #2d3748;
+    --d-muted:      #718096;
+    --d-border:     #e2e8f0;
+    --d-white:      #ffffff;
+    --d-bg:         #f4f7fa;
+    --d-radius:     16px;
+    background: var(--d-bg);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.dest-hero {
+    position: relative;
+    height: 480px;
+    background: linear-gradient(135deg, #0f3580 0%, #1a56db 100%);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.dest-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0,0,0,0.15) 0%, transparent 60%);
+}
+
+/* patrón de puntos decorativo */
+.dest-hero::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 45%;
+    background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+.dest-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.dest-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin-bottom: 1.2rem;
+}
+
+.dest-hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    color: #fff;
+    margin: 0 0 1rem;
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+.dest-hero-content h1 em {
+    font-style: italic;
+    color: #93c5fd;
+}
+
+.dest-hero-content p {
+    color: rgba(255,255,255,0.75);
+    font-size: 1.1rem;
+    margin: 0;
+    max-width: 480px;
+}
+
+/* ── FILTROS ──────────────────────────────────────────────── */
+.dest-filtros-section {
+    background: var(--d-white);
+    border-bottom: 1px solid var(--d-border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.dest-filtros-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 68px;
+}
+
+/* Buscador */
+.dest-search-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--d-bg);
+    border: 1.5px solid var(--d-border);
+    border-radius: 10px;
+    padding: 0 1rem;
+    flex: 1;
+    max-width: 320px;
+    height: 42px;
+    transition: border-color 0.2s;
+}
+
+.dest-search-form:focus-within {
+    border-color: var(--d-blue);
+    background: var(--d-white);
+}
+
+.dest-search-form i {
+    color: var(--d-muted);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.dest-search-form input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: var(--d-text);
+    width: 100%;
+}
+
+.dest-search-form input::placeholder { color: #a0aec0; }
+
+/* Tabs */
+.dest-tabs {
+    display: flex;
+    gap: 6px;
+    margin-left: auto;
+}
+
+.dest-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--d-muted);
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    transition: all 0.18s;
+}
+
+.dest-tab:hover {
+    background: var(--d-blue-soft);
+    color: var(--d-blue);
+}
+
+.dest-tab.active {
+    background: var(--d-blue);
+    color: #fff;
+    border-color: var(--d-blue);
+}
+
+.dest-tab i { font-size: 0.82rem; }
+
+/* ── CATÁLOGO ─────────────────────────────────────────────── */
+.dest-catalogo-section {
+    padding: 2.5rem 0 4rem;
+}
+
+.dest-catalogo-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.dest-count {
+    font-size: 0.85rem;
+    color: var(--d-muted);
+    margin: 0 0 1.5rem;
+}
+
+/* Grid de cards */
+.dest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5rem;
+}
+
+/* ── Card ─────────────────────────────────────────────────── */
+.dest-card {
+    background: var(--d-white);
+    border-radius: var(--d-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+}
+
+.dest-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(26,86,219,0.14);
+}
+
+/* Imagen */
+.dest-card-img {
+    position: relative;
+    height: 210px;
+    overflow: hidden;
+}
+
+.dest-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.dest-card:hover .dest-card-img img {
+    transform: scale(1.06);
+}
+
+/* Badge tipo */
+.dest-tipo-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 11px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.dest-tipo-nacional {
+    background: rgba(16, 185, 129, 0.9);
+    color: #fff;
+}
+
+.dest-tipo-internacional {
+    background: rgba(26, 86, 219, 0.9);
+    color: #fff;
+}
+
+/* Cuerpo de la card */
+.dest-card-body {
+    padding: 1.3rem 1.4rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.dest-card-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--d-text);
+    margin: 0 0 0.5rem;
+}
+
+.dest-card-desc {
+    font-size: 0.88rem;
+    color: var(--d-muted);
+    line-height: 1.6;
+    margin: 0 0 1.2rem;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Footer de la card */
+.dest-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-top: 1px solid var(--d-border);
+    padding-top: 1rem;
+    margin-top: auto;
+}
+
+.dest-precio {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.dest-precio-desde {
+    font-size: 0.72rem;
+    color: var(--d-muted);
+}
+
+.dest-precio-val {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--d-blue-dark);
+}
+
+.dest-precio-mn {
+    font-size: 0.72rem;
+    color: var(--d-muted);
+}
+
+/* Botón reservar */
+.dest-btn-reservar {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 18px;
+    background: var(--d-blue);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+}
+
+.dest-btn-reservar:hover {
+    background: var(--d-blue-dark);
+    transform: translateX(2px);
+}
+
+.dest-btn-reservar i { font-size: 0.78rem; }
+
+/* ── Estado vacío ─────────────────────────────────────────── */
+.dest-empty {
+    text-align: center;
+    padding: 5rem 1rem;
+    color: var(--d-muted);
+}
+
+.dest-empty i {
+    font-size: 3.5rem;
+    color: #cbd5e0;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.dest-empty h3 {
+    font-size: 1.4rem;
+    color: var(--d-text);
+    margin: 0 0 0.5rem;
+}
+
+.dest-empty p { font-size: 0.95rem; }
+.dest-empty a { color: var(--d-blue); font-weight: 600; }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .dest-hero { height: 360px; }
+
+    .dest-filtros-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 0.8rem 1.2rem;
+        gap: 0.8rem;
+    }
+
+    .dest-search-form { max-width: 100%; flex: 1 1 100%; }
+
+    .dest-tabs { margin-left: 0; width: 100%; justify-content: center; }
+
+    .dest-grid { grid-template-columns: 1fr; }
+
+    .dest-catalogo-container { padding: 0 1.2rem; }
+}
+
+@media (max-width: 480px) {
+    .dest-hero-content h1 { font-size: 2rem; }
+    .dest-tab { padding: 7px 12px; font-size: 0.82rem; }
+}

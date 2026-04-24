@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap');
+
 
 /* ══════════════════════════════
    VARIABLES & RESET
@@ -37,57 +37,6 @@ body {
 }
 
 img { display: block; max-width: 100%; }
-
-/* ══════════════════════════════
-   HEADER
-══════════════════════════════ */
-.site-header {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--gris-borde);
-}
-.header-inner {
-  max-width: 140rem;
-  margin: 0 auto;
-  padding: 1.4rem 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex; align-items: center; gap: 1rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem; font-weight: 700;
-  color: var(--azul-oscuro);
-}
-.logo img { height: 4rem; }
-nav { display: flex; gap: 3rem; }
-nav a {
-  font-size: 1.5rem; font-weight: 500;
-  color: var(--gris-texto);
-  transition: color .2s;
-}
-nav a.active, nav a:hover { color: var(--azul); }
-.header-actions { display: flex; align-items: center; gap: 1.4rem; }
-.btn-admin {
-  font-size: 1.4rem; color: var(--oscuro); font-weight: 500;
-  display: flex; align-items: center; gap: .5rem;
-  padding: .7rem 1.6rem;
-  border: 1px solid var(--gris-borde);
-  border-radius: 5rem;
-  transition: border-color .2s;
-}
-.btn-admin:hover { border-color: var(--azul); color: var(--azul); }
-.btn-reservar {
-  font-size: 1.4rem; font-weight: 600; color: var(--blanco);
-  background: var(--azul);
-  padding: .9rem 2.2rem;
-  border-radius: 5rem;
-  transition: background .2s, transform .2s;
-}
-.btn-reservar:hover { background: var(--azul-oscuro); transform: translateY(-2px); }
 
 /* ══════════════════════════════
    HERO
@@ -219,11 +168,6 @@ nav a.active, nav a:hover { color: var(--azul); }
 /* ══════════════════════════════
    DESTINOS (Full Optimized)
 ══════════════════════════════ */
-:root {
-    --naranja-vibrante: #ff6b2b; /* El color de la imagen */
-    --oscuro-deep: #0a1128;
-    --blanco: #ffffff;
-}
 
 .destinos {
   padding: 6rem 6%;
@@ -764,87 +708,6 @@ select.finput { cursor: pointer; }
 }
 .dato small { font-size: 1.1rem; color: var(--gris-texto); display: block; }
 .dato p { font-size: 1.4rem; font-weight: 500; color: var(--oscuro); margin: 0; }
-
-/* ══════════════════════════════
-   FOOTER
-══════════════════════════════ */
-.site-footer {
-  background: var(--azul-oscuro);
-  padding: 6rem 6% 0;
-}
-.footer-inner {
-  display: grid;
-  grid-template-columns: 1.3fr 2fr;
-  gap: 6rem;
-  padding-bottom: 5rem;
-  border-bottom: 1px solid rgba(255,255,255,.1) !important;
-}
-.footer-brand .footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.4rem; font-weight: 700;
-  color: var(--blanco);
-  margin-bottom: 1.4rem;
-}
-.footer-brand p {
-  font-size: 1.4rem;
-  color: rgba(255,255,255,.65);
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
-}
-.footer-newsletter {
-  display: flex;
-  background: rgba(255,255,255,.08);
-  border-radius: 5rem;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.15) !important;
-}
-.footer-newsletter input {
-  flex: 1;
-  background: transparent;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 1.4rem;
-  color: var(--blanco);
-  padding: 1.1rem 1.8rem;
-}
-.footer-newsletter input::placeholder { color: rgba(255,255,255,.45); }
-.footer-newsletter button {
-  background: var(--azul-medio);
-  color: var(--blanco);
-  width: 4.8rem;
-  font-size: 1.5rem;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background .2s;
-}
-.footer-newsletter button:hover { background: var(--azul); }
-
-.footer-links {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-.footer-col h5 {
-  font-size: 1.4rem; font-weight: 700;
-  color: var(--blanco);
-  margin-bottom: 1.6rem;
-}
-.footer-col a {
-  display: block;
-  font-size: 1.4rem;
-  color: rgba(255,255,255,.6);
-  margin-bottom: .9rem;
-  transition: color .2s;
-}
-.footer-col a:hover { color: #90c4ff; }
-
-.footer-bottom {
-  padding: 2rem 0;
-  text-align: center;
-}
-.footer-bottom p {
-  font-size: 1.3rem;
-  color: rgba(255,255,255,.4);
-}
 
 /* ══════════════════════════════
    RESPONSIVE

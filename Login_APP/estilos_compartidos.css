@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;500;600&display=swap');
+
+/* ── Fondo de página SOLO cuando existe .auth-card ────────── */
+body:has(.auth-card) {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EDF4FB;
+    background-image:
+        radial-gradient(ellipse 65% 55% at 80% 5%,  rgba(99,172,229,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 15% 95%, rgba(59,130,196,0.12) 0%, transparent 60%);
+    font-family: 'Outfit', sans-serif;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+/* Contenedor horizontal */
+.auth-card .horizontal-hints {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Los separa equitativamente */
+    margin-top: 8px;
+    padding: 0 4px;
+}
+
+.auth-card .hint-inline {
+    font-size: 0.65rem;
+    color: #A3C2D8; /* Color suave por defecto */
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Divisor sutil entre palabras */
+.auth-card .hint-divider {
+    width: 1px;
+    height: 10px;
+    background: #D1E2F1;
+}
+
+/* Estado cuando se cumple el requisito */
+.auth-card .hint-inline.completed {
+    color: #2B6EA8; /* Azul oscuro */
+    font-weight: 700;
+}
+
+/* Puntito de éxito opcional que aparece cuando se completa */
+.auth-card .hint-inline.completed::after {
+    content: ' ✓';
+    font-size: 0.6rem;
+    color: #3BB464;
+}
+/* ── Tarjeta ──────────────────────────────────────────────── */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #FFFFFF;
+    border: 1.5px solid #C8DDEF;
+    border-radius: 18px;
+    padding: 2.4rem 2.6rem 2.2rem;
+    box-sizing: border-box;
+    box-shadow: 0 8px 32px rgba(59, 130, 196, 0.1);
+    animation: authSlideIn 0.4s ease both;
+    margin: auto;
+}
+
+.auth-card.registro {
+    max-width: 520px;
+}
+
+@keyframes authSlideIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Badge decorativo ─────────────────────────────────────── */
+.auth-card .auth-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #EAF3FB;
+    border: 1px solid #B3D4EE;
+    color: #2B6EA8;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 20px;
+    margin-bottom: 0.7rem;
+}
+
+.auth-card .auth-badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #3B82C4;
+    display: inline-block;
+}
+
+/* ── Encabezado ───────────────────────────────────────────── */
+.auth-card .header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    color: #0F2D4A;
+    margin: 0 0 0.25rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+}
+
+.auth-card .header p {
+    color: #6B92B0;
+    font-size: 0.88rem;
+    margin: 0 0 1.4rem;
+}
+
+.auth-card .auth-divider {
+    height: 1px;
+    background: linear-gradient(to right, #B3D4EE, transparent);
+    margin-bottom: 1.4rem;
+}
+
+/* ── Grid 2 columnas (registro) ───────────────────────────── */
+.auth-card .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+}
+
+.auth-card .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.auth-card .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+/* ── Labels ───────────────────────────────────────────────── */
+.auth-card .form-group label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #3A6A90;
+}
+
+/* ── Inputs ───────────────────────────────────────────────── */
+.auth-card .form-group input {
+    background: #F4F9FD;
+    border: 1.5px solid #C8DDEF;
+    border-radius: 8px;
+    padding: 0.65rem 0.9rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    color: #0F2D4A;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.auth-card .form-group input::placeholder {
+    color: #A3C2D8;
+}
+
+.auth-card .form-group input:focus {
+    border-color: #3B82C4;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(59, 130, 196, 0.14);
+}
+
+.auth-card .form-group input:valid:not(:placeholder-shown) {
+    border-color: rgba(59, 180, 100, 0.55);
+}
+
+/* ── Show/hide contraseña ─────────────────────────────────── */
+.auth-card .pass-wrapper {
+    position: relative;
+}
+
+.auth-card .pass-wrapper input {
+    padding-right: 2.8rem;
+}
+
+.auth-card .eye-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #85AECB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.auth-card .eye-toggle:hover {
+    color: #3B82C4;
+}
+
+.auth-card .eye-toggle svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ── Barra de fortaleza ───────────────────────────────────── */
+.auth-card .strength-bar {
+    display: flex;
+    gap: 3px;
+    margin-top: 5px;
+}
+
+.auth-card .strength-seg {
+    height: 3px;
+    flex: 1;
+    border-radius: 2px;
+    background: #C8DDEF;
+    transition: background 0.3s;
+}
+
+.auth-card .strength-seg.weak   { background: #E24B4A; }
+.auth-card .strength-seg.medium { background: #EF9F27; }
+.auth-card .strength-seg.strong { background: #3BB464; }
+
+/* ── intl-tel-input overrides ─────────────────────────────── */
+.auth-card .iti { width: 100%; }
+
+.auth-card .iti__selected-flag {
+    background: #EAF3FB;
+    border-right: 1.5px solid #C8DDEF;
+}
+
+.auth-card .iti__selected-flag:hover { background: #D6EAFA; }
+
+.auth-card .iti__arrow        { border-top-color:    #3A6A90; }
+.auth-card .iti__arrow--up    { border-bottom-color: #3A6A90; }
+
+.auth-card .iti__country-list {
+    background: #FFFFFF;
+    border: 1.5px solid #C8DDEF;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(59, 130, 196, 0.12);
+    color: #0F2D4A;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    max-height: 220px;
+}
+
+.auth-card .iti__country.iti__highlight,
+.auth-card .iti__country:hover { background: #EAF3FB; }
+
+.auth-card .iti__search-input {
+    background: #F4F9FD;
+    border: 1.5px solid #C8DDEF;
+    border-radius: 6px;
+    color: #0F2D4A;
+    font-family: 'Outfit', sans-serif;
+    padding: 0.4rem 0.7rem;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.auth-card .iti__divider { border-bottom-color: #C8DDEF; }
+
+/* ── Botón ────────────────────────────────────────────────── */
+.auth-card .btn-auth {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.85rem;
+    background: #2563A8;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(37, 99, 168, 0.28);
+}
+
+.auth-card .btn-auth:hover {
+    background: #1A4E8A;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 99, 168, 0.35);
+}
+
+.auth-card .btn-auth:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37, 99, 168, 0.25);
+}
+
+/* ── Footer link ──────────────────────────────────────────── */
+.auth-card .footer-link {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.86rem;
+    color: #6B92B0;
+}
+
+.auth-card .footer-link a {
+    color: #2563A8;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.auth-card .footer-link a:hover {
+    color: #1A4E8A;
+    text-decoration: underline;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 520px) {
+    .auth-card {
+        padding: 1.8rem 1.4rem;
+        border-radius: 14px;
+    }
+
+    .auth-card .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-card .form-group.full-width {
+        grid-column: 1;
+    }
+
+    .auth-card .header h2 {
+        font-size: 1.55rem;
+    }
+}

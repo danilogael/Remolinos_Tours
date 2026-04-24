@@ -1,8 +1,8 @@
-/* ══════════════════════════════
+* ══════════════════════════════
    FOOTER INTERACTIVO CLARO
 ══════════════════════════════ */
 footer {
-    background: #f0f7ff; /* Azul muy claro y fresco */
+    background: #f0f7ff;
     color: #334155;
     padding: 8rem 6% 3rem;
     font-family: 'DM Sans', sans-serif;
@@ -10,7 +10,6 @@ footer {
     position: relative;
 }
 
-/* Decoración: Círculo de luz suave al fondo */
 footer::before {
     content: '';
     position: absolute;
@@ -29,16 +28,14 @@ footer::before {
     z-index: 1;
 }
 
-/* Títulos con línea animada */
 .footer-section h3 {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
-    color: #1e40af; /* Azul medio para contraste */
+    color: #1e40af;
     margin-bottom: 2rem;
     position: relative;
 }
 
-/* Descripción */
 .footer-section p {
     font-size: 1.45rem;
     line-height: 1.6;
@@ -46,7 +43,6 @@ footer::before {
     margin-bottom: 2.5rem;
 }
 
-/* Enlaces con efecto de desplazamiento y color */
 .footer-section ul {
     list-style: none;
     padding: 0;
@@ -67,10 +63,9 @@ footer::before {
 
 .footer-section ul li a:hover {
     color: #2563eb;
-    transform: translateX(8px); /* Se desplaza a la derecha */
+    transform: translateX(8px);
 }
 
-/* Iconos Sociales con efecto de rebote */
 .social-icons {
     display: flex;
     gap: 1rem;
@@ -98,7 +93,6 @@ footer::before {
     box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
 }
 
-/* Input de Newsletter o Info extra (Efecto Interactivo) */
 .footer-bottom {
     margin-top: 6rem;
     padding-top: 3rem;
@@ -111,7 +105,6 @@ footer::before {
     color: #94a3b8;
 }
 
-/* Parte legal con hover */
 .copy-text {
     font-weight: 600;
     color: #1e40af;
@@ -123,7 +116,6 @@ footer::before {
     color: #2563eb;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
     .footer-container {
         grid-template-columns: 1fr 1fr;
@@ -133,6 +125,6 @@ footer::before {
         justify-content: center;
     }
     .footer-section ul li a:hover {
-        transform: scale(1.05); /* En móvil mejor escala que traslación */
+        transform: scale(1.05);
     }
 }

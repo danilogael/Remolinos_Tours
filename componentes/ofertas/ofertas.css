@@ -1,0 +1,58 @@
+/* Estilo Base del Hero */
+.hero-creative {
+    position: relative;
+    height: 450px;
+    border-radius: 30px; /* Bordes redondeados modernos */
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    overflow: hidden;
+    color: white;
+}
+
+/* Fondos específicos (Usa tus propias imágenes de Remolinos) */
+.hero-destinos { background: url('/Agencia_Remolinos/assets/imagenes/barco.jpg') center/cover; }
+.hero-reservas { background: url('/Agencia_Remolinos/assets/imagenes/acapulco.jpg') center/cover; }
+.hero-ofertas { background: url('/Agencia_Remolinos/assets/imagenes/los_cabos.jpg') center/cover; }
+
+/* Capas de diseño */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(15, 53, 128, 0.8) 0%, transparent 100%);
+}
+
+.hero-body {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.hero-body h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin: 15px 0;
+}
+
+.hero-body h1 span {
+    color: #3B82C4; /* Tu azul característico */
+    font-weight: 800;
+}
+
+/* Elemento creativo para Ofertas */
+.badge-promo {
+    background: #FFD700;
+    color: #0f3580;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
