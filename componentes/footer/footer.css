@@ -70,6 +70,13 @@ footer::before {
     display: flex;
     gap: 1rem;
 }
+/* Quita el subrayado a todos los enlaces de redes sociales */
+.social-icon-link, /* O la clase que estés usando */
+.footer-socials a {
+    text-decoration: none !important;
+    border-bottom: none !important; /* Por si acaso es un borde inferior */
+    outline: none;
+}
 
 .social-icons a {
     width: 4rem;
@@ -84,6 +91,9 @@ footer::before {
     font-size: 1.7rem;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    text-decoration: none; /* Asegura que no hay subrayado */
+    line-height: 0;        /* Elimina el espacio de base de la tipografía */
+    overflow: hidden;
 }
 
 .social-icons a:hover {

@@ -15,4 +15,5 @@ if (!$conexion) {
 
 // Configurar el conjunto de caracteres a UTF-8 para que acepten acentos y la "ñ"
 mysqli_set_charset($conexion, "utf8");
+$conn = $conexion; // Ahora ambas variables apuntan a la misma conexión
 ?>

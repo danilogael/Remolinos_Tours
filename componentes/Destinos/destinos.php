@@ -1,7 +1,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/Agencia_Remolinos/Database/conexion.php';
 
-// Filtro de tipo recibido por GET
 $tipo_filtro = isset($_GET['tipo']) && in_array($_GET['tipo'], ['nacional','internacional']) 
                ? $_GET['tipo'] 
                : 'todos';

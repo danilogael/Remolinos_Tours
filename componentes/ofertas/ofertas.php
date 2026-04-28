@@ -1,3 +1,8 @@
+<?php 
+include('auth.php'); // Esto verifica que ya pasaste por el Login_API
+include('../Database/conexion.php'); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

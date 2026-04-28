@@ -19,8 +19,8 @@
     <h1>Descubre el Mundo con<br><span>REMOLINOS TOURS</span></h1>
     <p>Experiencias únicas que transforman viajes en recuerdos inolvidables.<br>Más de 5,000 viajeros felices nos respaldan.</p>
     <div class="hero-btns">
-      <a href="#destinos" class="btn-primary">Explorar Destinos <i class="fas fa-arrow-right"></i></a>
-      <a href="#contact" class="btn-ghost">Reservar Ahora</a>
+      <a href="/Agencia_Remolinos/componentes/Destinos/destinos.php" class="btn-primary">Explorar Destinos <i class="fas fa-arrow-right"></i></a>
+      <a href="/Agencia_Remolinos/componentes/Reserva/reserva.php" class="btn-ghost">Reservar Ahora</a>
     </div>
   </div>
   <div class="hero-stats">
@@ -200,7 +200,7 @@
     <span class="cta-label">OFERTA ESPECIAL</span>
     <h2>COMIENZA TU AVENTURA<br>HOY</h2>
     <p>Reserva ahora y obtén <strong>10% de descuento</strong><br>en tu primer viaje con nosotros</p>
-    <a href="#contact" class="btn-cta-main"><i class="fas fa-shopping-bag"></i> RESERVAR AHORA <i class="fas fa-external-link-alt"></i></a>
+    <a href="/Agencia_Remolinos/componentes/Reserva/reserva.php" class="btn-cta-main"><i class="fas fa-shopping-bag"></i> RESERVAR AHORA <i class="fas fa-external-link-alt"></i></a>
   </div>
 </section>
 

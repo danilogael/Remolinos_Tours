@@ -53,8 +53,12 @@
 .stepper-wrap {
   background: var(--blanco);
   border-bottom: 1px solid var(--gris-borde);
-  padding: 2.5rem 4rem;
-  position: sticky; top: 7rem; z-index: 100;
+  /* Bajamos de 2.5rem a 1rem para que sea más delgado */
+  padding: 1rem 4rem; 
+  position: sticky; 
+  /* Si tu header es más delgado, puedes bajar este 7rem a 6rem o 5rem */
+  top: 7rem; 
+  z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,.06);
 }
 .stepper {
