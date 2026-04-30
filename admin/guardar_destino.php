@@ -38,6 +38,17 @@ $estado       = mysqli_real_escape_string($conexion, $_POST['estado']           
 $fecha_salida = !empty($_POST['fecha_salida']) ? "'" . mysqli_real_escape_string($conexion, $_POST['fecha_salida']) . "'" : 'NULL';
 $foto_esc     = mysqli_real_escape_string($conexion, $foto);
 $prov_val     = $id_proveedor > 0 ? $id_proveedor : 'NULL';
+$tipo_cupo    = in_array($_POST['tipo_cupo'] ?? 'flexible', ['flexible','fijo'], true) ? $_POST['tipo_cupo'] : 'flexible';
+$permite_ninos= isset($_POST['permite_ninos']) ? 1 : 0;
+$min_adultos  = max(1, (int)($_POST['min_adultos'] ?? 1));
+$max_adultos  = max($min_adultos, (int)($_POST['max_adultos'] ?? 10));
+$max_ninos    = $permite_ninos ? max(0, (int)($_POST['max_ninos'] ?? 6)) : 0;
+$es_oferta    = isset($_POST['es_oferta']) ? 1 : 0;
+$oferta_titulo= mysqli_real_escape_string($conexion, trim($_POST['oferta_titulo'] ?? ''));
+$precio_oferta= ($_POST['precio_oferta'] ?? '') !== '' ? (float)$_POST['precio_oferta'] : 'NULL';
+$oferta_inicio= !empty($_POST['oferta_inicio']) ? "'" . mysqli_real_escape_string($conexion, $_POST['oferta_inicio']) . "'" : 'NULL';
+$oferta_fin   = !empty($_POST['oferta_fin']) ? "'" . mysqli_real_escape_string($conexion, $_POST['oferta_fin']) . "'" : 'NULL';
+$tipo_cupo_esc= mysqli_real_escape_string($conexion, $tipo_cupo);
 
 if ($nombre === '') {
     header("Location: nuevo_destino.php?error=" . urlencode('El nombre es obligatorio.'));
@@ -47,11 +58,15 @@ if ($nombre === '') {
 $sql = "INSERT INTO destinos
             (nombre, descripcion, precio, precio_nino, id_proveedor, foto_portada,
              tipo_trayecto, cupo_total, punto_salida, maleta_mano_kg, maleta_documentada_kg,
-             seguro_basico_incluido, dias, noches, fecha_salida, estado)
+             seguro_basico_incluido, dias, noches, fecha_salida, estado,
+             es_oferta, oferta_titulo, precio_oferta, oferta_inicio, oferta_fin,
+             permite_ninos, min_adultos, max_adultos, max_ninos, tipo_cupo)
         VALUES
             ('$nombre','$descripcion',$precio,$precio_nino,$prov_val,'$foto_esc',
              '$tipo_trayecto',$cupo,'$punto_salida',$kg_mano,$kg_doc,
-             $seguro,$dias,$noches,$fecha_salida,'$estado')";
+             $seguro,$dias,$noches,$fecha_salida,'$estado',
+             $es_oferta,'$oferta_titulo',$precio_oferta,$oferta_inicio,$oferta_fin,
+             $permite_ninos,$min_adultos,$max_adultos,$max_ninos,'$tipo_cupo_esc')";
 
 if (!mysqli_query($conexion, $sql)) {
     header("Location: nuevo_destino.php?error=" . urlencode('Error al guardar: ' . mysqli_error($conexion)));

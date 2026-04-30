@@ -6,6 +6,7 @@ $menu = [
     'usuarios'    => ['icono'=>'fa-users',           'label'=>'Usuarios',          'url'=>'usuarios.php'],
     'destinos'    => ['icono'=>'fa-earth-americas',  'label'=>'Destinos',          'url'=>'destinos.php'],
     'reservas'    => ['icono'=>'fa-clipboard-list',  'label'=>'Reservas',          'url'=>'reservas.php'],
+    'noticias'    => ['icono'=>'fa-newspaper',        'label'=>'Noticias',          'url'=>'noticias.php'],
     'proveedores' => ['icono'=>'fa-plane',           'label'=>'Aerolíneas/Socios', 'url'=>'proveedores.php'],
 ];
 ?>

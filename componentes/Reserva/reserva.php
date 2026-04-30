@@ -14,6 +14,7 @@ if (!isset($_SESSION['id_usuario'])) {
 // Cargar destinos activos
 // La columna "activo" no existe en tu tabla; se usa el campo "estado"
 $destinos = [];
+$idPreseleccionado = isset($_GET['id_destino']) ? (int)$_GET['id_destino'] : 0;
 $res = mysqli_query($conexion, "SELECT * FROM destinos WHERE estado = 'Activo' ORDER BY nombre ASC");
 if ($res) {
     while ($row = mysqli_fetch_assoc($res)) {
@@ -94,9 +95,16 @@ $usuario    = mysqli_fetch_assoc($resUser);
           <div class="paquete-card" 
                data-id="<?= $d['id'] ?>"
                data-nombre="<?= htmlspecialchars($d['nombre']) ?>"
-               data-precio="<?= $d['precio'] ?>"
+               data-precio="<?= !empty($d['es_oferta']) && !empty($d['precio_oferta']) ? $d['precio_oferta'] : $d['precio'] ?>"
+               data-precio-normal="<?= $d['precio'] ?>"
                data-imagen="<?= htmlspecialchars($d['foto_portada'] ?? '') ?>"
                data-descripcion="<?= htmlspecialchars($d['descripcion'] ?? '') ?>"
+               data-permite-ninos="<?= (int)($d['permite_ninos'] ?? 1) ?>"
+               data-min-adultos="<?= (int)($d['min_adultos'] ?? 1) ?>"
+               data-max-adultos="<?= (int)($d['max_adultos'] ?? 10) ?>"
+               data-max-ninos="<?= (int)($d['max_ninos'] ?? 6) ?>"
+               data-cupo-total="<?= (int)($d['cupo_total'] ?? 20) ?>"
+               data-tipo-cupo="<?= htmlspecialchars($d['tipo_cupo'] ?? 'flexible') ?>"
                onclick="seleccionarPaquete(this)">
             <div class="paquete-img-wrap">
               <img src="/Agencia_Remolinos/assets/imagenes/<?= htmlspecialchars($d['foto_portada'] ?? 'default.png') ?>" 
@@ -108,7 +116,7 @@ $usuario    = mysqli_fetch_assoc($resUser);
               <h3><?= htmlspecialchars($d['nombre']) ?></h3>
               <p><?= htmlspecialchars(substr($d['descripcion'], 0, 60)) ?>...</p>
               <div class="paquete-precio">
-                <strong>$<?= number_format($d['precio'], 0, '.', ',') ?></strong>
+                <strong>$<?= number_format(!empty($d['es_oferta']) && !empty($d['precio_oferta']) ? $d['precio_oferta'] : $d['precio'], 0, '.', ',') ?></strong>
                 <span>por persona</span>
               </div>
             </div>
@@ -298,6 +306,7 @@ $usuario    = mysqli_fetch_assoc($resUser);
             email: <?= json_encode($usuario['email']) ?>,
             telefono: <?= json_encode($usuario['telefono'] ?? '') ?>
         },
+        preseleccionado: <?= json_encode($idPreseleccionado) ?>,
         rutas: {
             imagenes: '/Agencia_Remolinos/assets/imagenes/destinos/',
             guardar: '/Agencia_Remolinos/componentes/Reserva/guardar_reserva.php'
