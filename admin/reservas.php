@@ -111,6 +111,13 @@ require_once 'includes/header.php';
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end shadow">
                                     <li>
+                                        <a class="dropdown-item text-primary"
+                                           href="detalle_reserva.php?id=<?= (int)$r['id'] ?>">
+                                            <i class="fa-solid fa-eye me-2"></i>Ver detalles
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
                                         <a class="dropdown-item text-success"
                                            href="cambiar_estado.php?id=<?= $r['id'] ?>&estado=Confirmada">
                                             <i class="fa-solid fa-check me-2"></i>Confirmar

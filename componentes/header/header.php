@@ -25,6 +25,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <li><a href="/Agencia_Remolinos/componentes/Destinos/destinos.php" class="nav-link">Destinos</a></li>
           <li><a href="/Agencia_Remolinos/componentes/Reserva/reserva.php" class="nav-link">Reserva</a></li>
           <li><a href="/Agencia_Remolinos/componentes/ofertas/ofertas.php" class="nav-link">Ofertas</a></li>
+          <li><a href="/Agencia_Remolinos/componentes/noticias/noticias.php" class="nav-link">Noticias</a></li>
       </ul>
     </nav>
 
@@ -33,7 +34,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="user-menu-wrap">
           <button class="user-btn" id="user-btn" aria-label="Menú usuario">
             <i class="fas fa-user-circle"></i>
-            <span class="user-name"><?php echo explode(' ', $_SESSION['nombre'])[0]; ?></span>
+            <span class="user-name"><?= htmlspecialchars(explode(' ', $_SESSION['nombre'] ?? 'Usuario')[0], ENT_QUOTES, 'UTF-8') ?></span>
             <i class="fas fa-chevron-down user-chevron"></i>
           </button>
           <ul class="user-dropdown" id="user-dropdown">
@@ -72,8 +73,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <ul class="mobile-nav-list">
       <li><a href="/Agencia_Remolinos/index.php"><i class="fas fa-home"></i> Inicio</a></li>
       <li><a href="/Agencia_Remolinos/componentes/Destinos/destinos.php"><i class="fas fa-globe"></i> Descubre</a></li>
-      <li><a href="/Agencia_Remolinos/componentes/Planea/planea.php"><i class="fas fa-map-marked-alt"></i> Planea tu viaje</a></li>
+      <li><a href="/Agencia_Remolinos/componentes/Reserva/mi_viaje.php"><i class="fas fa-map-marked-alt"></i> Planea tu viaje</a></li>
       <li><a href="/Agencia_Remolinos/componentes/ofertas/ofertas.php"><i class="fas fa-tag"></i> Ofertas</a></li>
+      <li><a href="/Agencia_Remolinos/componentes/noticias/noticias.php"><i class="fas fa-newspaper"></i> Noticias</a></li>
       <li class="mobile-divider"></li>
       <?php if (isset($_SESSION['id_usuario'])): ?>
         <li><a href="/Agencia_Remolinos/user/viewdata.php"><i class="fas fa-user"></i> Mi perfil</a></li>

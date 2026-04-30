@@ -1,0 +1,386 @@
+/* ═══════════════════════════════════════════════════════
+   MI VIAJE A LA MEDIDA — CSS
+   Extiende reserva.css sin sobreescribirlo
+═══════════════════════════════════════════════════════ */
+
+/* ── HERO personalizado ──────────────────────────────── */
+.mv-hero {
+    background-image: url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1600&q=80') !important;
+}
+
+/* ── Selector de modo (paquete vs personalizado) ─────── */
+.mv-modo-selector {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    background: #fff;
+    padding: 1.8rem 2rem;
+    border-bottom: 1px solid #e5e7eb;
+    flex-wrap: wrap;
+}
+.mv-modo-btn {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem 2.4rem;
+    border-radius: 1.2rem;
+    border: 2px solid #e5e7eb;
+    background: #f9fafb;
+    text-decoration: none;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all .2s;
+    min-width: 22rem;
+}
+.mv-modo-btn:hover { border-color: #1a56db; color: #1a56db; background: #eff6ff; }
+.mv-modo-btn i { font-size: 2rem; flex-shrink: 0; }
+.mv-modo-btn strong { display: block; font-size: 1.5rem; font-weight: 700; color: inherit; }
+.mv-modo-btn span   { font-size: 1.2rem; color: #9ca3af; }
+.mv-modo-active {
+    border-color: #f97316 !important;
+    background: #fff7ed !important;
+    color: #ea580c !important;
+}
+.mv-modo-active strong { color: #ea580c !important; }
+
+/* ── Buscador de destinos ────────────────────────────── */
+.mv-search-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #f1f5f9;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 5rem;
+    padding: 1rem 2rem;
+    margin-bottom: 2.5rem;
+    transition: border-color .2s, box-shadow .2s;
+}
+.mv-search-box:focus-within {
+    border-color: #1a56db;
+    box-shadow: 0 0 0 4px rgba(26,86,219,.1);
+    background: #fff;
+}
+.mv-search-box i { color: #94a3b8; font-size: 1.6rem; }
+.mv-search-box input {
+    border: none; background: transparent; outline: none;
+    font-size: 1.5rem; width: 100%; font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Grid de destinos ────────────────────────────────── */
+.mv-destinos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+/* Card destino */
+.mv-destino-card {
+    border: 2px solid #e5e7eb;
+    border-radius: 1.6rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .25s;
+    position: relative;
+    background: #fff;
+}
+.mv-destino-card:hover {
+    border-color: #1a56db;
+    box-shadow: 0 8px 28px rgba(26,86,219,.14);
+    transform: translateY(-3px);
+}
+.mv-destino-card.selected {
+    border-color: #f97316;
+    box-shadow: 0 8px 28px rgba(249,115,22,.2);
+}
+.mv-destino-card.hidden { display: none; }
+
+.mv-destino-img {
+    position: relative; height: 15rem; overflow: hidden;
+}
+.mv-destino-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .4s;
+}
+.mv-destino-card:hover .mv-destino-img img { transform: scale(1.06); }
+
+.mv-dias-pill {
+    position: absolute; top: 1rem; right: 1rem;
+    background: rgba(0,0,0,.55); color: #fff;
+    backdrop-filter: blur(4px);
+    border-radius: 5rem; padding: .4rem 1rem;
+    font-size: 1.1rem; font-weight: 600;
+}
+
+.mv-destino-body { padding: 1.6rem; }
+
+.mv-proveedor-tag {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-size: 1.1rem; font-weight: 700; color: #1a56db;
+    margin-bottom: .6rem;
+}
+.mv-destino-body h3 {
+    font-size: 1.7rem; font-weight: 800; color: #111827; margin-bottom: .4rem;
+}
+.mv-salida {
+    font-size: 1.2rem; color: #6b7280;
+    display: flex; align-items: center; gap: .5rem;
+    margin-bottom: .5rem;
+}
+.mv-salida i { color: #f59e0b; }
+.mv-desc { font-size: 1.25rem; color: #6b7280; line-height: 1.5; margin-bottom: 1.2rem; }
+
+.mv-precio-row {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: .8rem;
+}
+.mv-precio-label { display: block; font-size: 1rem; color: #9ca3af; }
+.mv-precio-val   { font-size: 2rem; font-weight: 800; color: #f97316; }
+.mv-precio-nino  { font-size: 1.5rem; font-weight: 700; color: #1a56db; }
+
+/* Check de seleccionado */
+.mv-destino-check {
+    display: none;
+    background: #f97316; color: #fff;
+    text-align: center; padding: .8rem;
+    font-size: 1.3rem; font-weight: 600;
+    border-radius: 0 0 1.4rem 1.4rem;
+    margin: .8rem -1.6rem -1.6rem;
+}
+.mv-destino-card.selected .mv-destino-check { display: block; }
+
+/* Empty state */
+.mv-empty {
+    grid-column: span 2;
+    text-align: center; padding: 4rem;
+    color: #9ca3af;
+}
+.mv-empty i { font-size: 4rem; display: block; margin-bottom: 1rem; }
+.mv-empty p { font-size: 1.5rem; }
+
+/* ── Duración calculada ──────────────────────────────── */
+.mv-duracion-box {
+    display: flex; align-items: center; gap: 1.2rem;
+    background: #eff6ff; border: 1px solid #bfdbfe;
+    border-radius: 1rem; padding: 1.4rem 2rem;
+    font-size: 1.5rem; color: #1e40af;
+    margin-bottom: 2rem;
+}
+.mv-duracion-box i { font-size: 1.8rem; }
+
+/* ── Opciones checkboxes (fechas flex) ───────────────── */
+.mv-opciones-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-bottom: 2rem;
+}
+.mv-opcion-check { display: block; cursor: pointer; }
+.mv-opcion-check input { display: none; }
+.mv-opcion-body {
+    display: flex; align-items: center; gap: 1.2rem;
+    padding: 1.6rem; border: 2px solid #e5e7eb;
+    border-radius: 1.2rem; background: #f9fafb;
+    transition: all .2s;
+}
+.mv-opcion-check:hover .mv-opcion-body { border-color: #1a56db; }
+.mv-opcion-check input:checked + .mv-opcion-body {
+    border-color: #1a56db; background: #eff6ff;
+}
+.mv-opcion-body i { font-size: 2rem; color: #1a56db; flex-shrink: 0; }
+.mv-opcion-body strong { display: block; font-size: 1.4rem; color: #111827; }
+.mv-opcion-body span   { font-size: 1.2rem; color: #6b7280; }
+
+/* ── Habitaciones ────────────────────────────────────── */
+.mv-subseccion {
+    font-size: 1.7rem; font-weight: 700; color: #111827;
+    margin: 2.5rem 0 1.5rem;
+    display: flex; align-items: center; gap: .8rem;
+}
+.mv-habitacion-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem; margin-bottom: 1.5rem;
+}
+.mv-hab-card {
+    cursor: pointer; display: block;
+}
+.mv-hab-card input { display: none; }
+.mv-hab-body {
+    display: flex; flex-direction: column; align-items: center;
+    gap: .6rem; padding: 1.6rem 1rem;
+    border: 2px solid #e5e7eb; border-radius: 1.2rem;
+    background: #f9fafb; text-align: center;
+    transition: all .2s;
+}
+.mv-hab-card:hover .mv-hab-body { border-color: #1a56db; }
+.mv-hab-card input:checked + .mv-hab-body {
+    border-color: #f97316; background: #fff7ed;
+}
+.mv-hab-body i      { font-size: 2rem; color: #1a56db; }
+.mv-hab-body strong { font-size: 1.3rem; color: #111827; }
+.mv-hab-body span   { font-size: 1.1rem; color: #9ca3af; }
+
+/* ── Necesidades especiales ──────────────────────────── */
+.mv-checks-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-bottom: 1rem;
+}
+.mv-check-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1.5px solid #e5e7eb; border-radius: 1rem;
+    cursor: pointer; background: #f9fafb;
+    font-size: 1.3rem; color: #374151;
+    transition: all .2s;
+}
+.mv-check-item:hover { border-color: #1a56db; background: #eff6ff; }
+.mv-check-item input { margin-right: .2rem; accent-color: #1a56db; }
+.mv-check-item i { color: #1a56db; font-size: 1.5rem; flex-shrink: 0; }
+
+/* ── Extras del destino ──────────────────────────────── */
+.mv-extras-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-bottom: 1.5rem;
+}
+.mv-extra-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1.5px solid #e5e7eb; border-radius: 1rem;
+    cursor: pointer; background: #f9fafb;
+    font-size: 1.3rem; color: #374151;
+    transition: all .2s;
+}
+.mv-extra-item:hover { border-color: #f59e0b; background: #fffbeb; }
+.mv-extra-item input { accent-color: #f59e0b; }
+.mv-extra-item i { color: #f59e0b; font-size: 1.5rem; }
+.mv-extra-precio { margin-left: auto; font-weight: 700; color: #f97316; font-size: 1.2rem; }
+.mv-hint { font-size: 1.3rem; color: #9ca3af; padding: 1.5rem 0; grid-column: span 2; }
+
+/* ── Servicios adicionales ───────────────────────────── */
+.mv-servicios-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+.mv-servicio-card { display: block; cursor: pointer; }
+.mv-servicio-card input { display: none; }
+.mv-servicio-body {
+    display: flex; align-items: center; gap: 1.2rem;
+    padding: 1.4rem 1.6rem;
+    border: 2px solid #e5e7eb; border-radius: 1.2rem;
+    background: #f9fafb; transition: all .2s;
+    position: relative;
+}
+.mv-servicio-card:hover .mv-servicio-body { border-color: #1a56db; }
+.mv-servicio-card input:checked + .mv-servicio-body {
+    border-color: #1a56db; background: #eff6ff;
+}
+.mv-servicio-body i { font-size: 2rem; color: #1a56db; flex-shrink: 0; }
+.mv-servicio-body div strong { display: block; font-size: 1.35rem; color: #111827; }
+.mv-servicio-body div span   { font-size: 1.15rem; color: #6b7280; }
+.mv-servicio-check {
+    display: none;
+    margin-left: auto;
+    width: 2.4rem; height: 2.4rem;
+    background: #1a56db; color: #fff;
+    border-radius: 50%; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+}
+.mv-servicio-card input:checked + .mv-servicio-body .mv-servicio-check { display: flex; }
+
+/* ── Presupuesto ─────────────────────────────────────── */
+.mv-presupuesto-grid {
+    display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 1rem;
+}
+.mv-presup-card {
+    display: flex; flex-direction: column; align-items: center; gap: .8rem;
+    padding: 1.4rem 2rem; border: 2px solid #e5e7eb; border-radius: 1.2rem;
+    background: #f9fafb; cursor: pointer; min-width: 13rem;
+    font-size: 1.3rem; color: #374151; transition: all .2s;
+}
+.mv-presup-card input { display: none; }
+.mv-presup-card:hover { border-color: #1a56db; }
+.mv-presup-card.selected { border-color: #1a56db; background: #eff6ff; color: #1e40af; }
+.mv-presup-card i { font-size: 2rem; color: #1a56db; }
+
+/* ── Confirmación ────────────────────────────────────── */
+.mv-confirm-section {
+    background: #f8fafc; border-radius: 1.2rem;
+    padding: 2rem; margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+}
+.mv-confirm-section h3 {
+    font-size: 1.5rem; font-weight: 700; color: #111827;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: .8rem;
+}
+.mv-confirm-section h3 i { color: #1a56db; }
+.mv-confirm-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+}
+.mv-confirm-item { display: flex; flex-direction: column; gap: .3rem; }
+.mv-confirm-item span   { font-size: 1.1rem; color: #9ca3af; }
+.mv-confirm-item strong { font-size: 1.35rem; color: #111827; font-weight: 600; }
+
+.mv-confirm-tags {
+    display: flex; flex-wrap: wrap; gap: .8rem;
+}
+.mv-tag {
+    display: inline-flex; align-items: center; gap: .5rem;
+    background: #eff6ff; color: #1e40af;
+    border: 1px solid #bfdbfe;
+    border-radius: 5rem; padding: .4rem 1.2rem;
+    font-size: 1.2rem; font-weight: 600;
+}
+.mv-tag.naranja { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+
+/* Términos */
+.mv-terminos {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.8rem; background: #fffbeb;
+    border: 1px solid #fde68a; border-radius: 1rem;
+    font-size: 1.35rem; color: #92400e; cursor: pointer;
+    margin-bottom: 2rem; line-height: 1.6;
+}
+.mv-terminos input { margin-top: .3rem; accent-color: #f97316; flex-shrink: 0; }
+
+/* ── Resumen lateral extras ──────────────────────────── */
+.mv-res-tags-wrap {
+    display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0;
+}
+.mv-res-tag {
+    background: #eff6ff; color: #1e40af;
+    border-radius: 5rem; padding: .3rem .9rem;
+    font-size: 1.1rem; font-weight: 600;
+}
+.mv-res-nota {
+    font-size: 1.1rem; color: #9ca3af;
+    text-align: center; margin-top: .8rem;
+    font-style: italic;
+}
+.mv-contacto-card { margin-top: 2rem; }
+.mv-wa-btn {
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    background: #25d366; color: #fff;
+    border-radius: 5rem; padding: 1.2rem;
+    font-size: 1.5rem; font-weight: 700;
+    text-decoration: none;
+    transition: background .2s, transform .2s;
+    box-shadow: 0 4px 16px rgba(37,211,102,.35);
+}
+.mv-wa-btn:hover { background: #128c7e; transform: translateY(-2px); }
+.mv-wa-btn i { font-size: 2rem; }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 900px) {
+    .mv-destinos-grid  { grid-template-columns: 1fr; }
+    .mv-habitacion-grid{ grid-template-columns: repeat(2, 1fr); }
+    .mv-servicios-grid { grid-template-columns: 1fr; }
+    .mv-opciones-grid  { grid-template-columns: 1fr; }
+    .mv-confirm-grid   { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+    .mv-habitacion-grid { grid-template-columns: 1fr 1fr; }
+    .mv-checks-grid     { grid-template-columns: 1fr; }
+    .mv-extras-grid     { grid-template-columns: 1fr; }
+    .mv-confirm-grid    { grid-template-columns: 1fr; }
+    .mv-modo-btn        { min-width: 100%; }
+}

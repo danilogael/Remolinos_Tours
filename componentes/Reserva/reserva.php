@@ -1,29 +1,31 @@
 <?php
-// 1. Primero la seguridad (auth.php ya debe tener session_start() dentro)
-include('auth.php'); 
+// Sesión y seguridad
+if (session_status() === PHP_SESSION_NONE) session_start();
 
-// 2. Una sola conexión (Usa la ruta que te funcione mejor, recomiendo la relativa)
-include('../Database/conexion.php');
+// Conexión — ruta relativa correcta desde componentes/Reserva/
+include(__DIR__ . '/../../Database/conexion.php');
 
-// 3. Verificamos cuál es tu variable de conexión ($conn o $conexion)
-// Según tus códigos anteriores, parece que usas $conexion.
-$db = (isset($conexion)) ? $conexion : $conn;
+// Si no hay sesión activa, redirigir al login
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: /Agencia_Remolinos/Login_APP/login.php?error=sesion_requerida");
+    exit();
+}
 
-// 4. Cargar destinos activos
+// Cargar destinos activos
+// La columna "activo" no existe en tu tabla; se usa el campo "estado"
 $destinos = [];
-$res = $db->query("SELECT * FROM destinos WHERE activo = 1 ORDER BY nombre ASC");
+$idPreseleccionado = isset($_GET['id_destino']) ? (int)$_GET['id_destino'] : 0;
+$res = mysqli_query($conexion, "SELECT * FROM destinos WHERE estado = 'Activo' ORDER BY nombre ASC");
 if ($res) {
-    while ($row = $res->fetch_assoc()) {
+    while ($row = mysqli_fetch_assoc($res)) {
         $destinos[] = $row;
     }
 }
 
-// 5. Datos del usuario logueado
-$id_usuario = $_SESSION['id_usuario']; // Variable que creamos en Login_API
-$stmt = $db->prepare("SELECT * FROM usuarios WHERE id = ?");
-$stmt->bind_param("i", $id_usuario);
-$stmt->execute();
-$usuario = $stmt->get_result()->fetch_assoc();
+// Datos del usuario logueado
+$id_usuario = (int)$_SESSION['id_usuario'];
+$resUser    = mysqli_query($conexion, "SELECT * FROM usuarios WHERE id = $id_usuario LIMIT 1");
+$usuario    = mysqli_fetch_assoc($resUser);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -93,21 +95,28 @@ $usuario = $stmt->get_result()->fetch_assoc();
           <div class="paquete-card" 
                data-id="<?= $d['id'] ?>"
                data-nombre="<?= htmlspecialchars($d['nombre']) ?>"
-               data-precio="<?= $d['precio'] ?>"
-               data-imagen="<?= htmlspecialchars($d['imagen']) ?>"
-               data-descripcion="<?= htmlspecialchars($d['descripcion']) ?>"
+               data-precio="<?= !empty($d['es_oferta']) && !empty($d['precio_oferta']) ? $d['precio_oferta'] : $d['precio'] ?>"
+               data-precio-normal="<?= $d['precio'] ?>"
+               data-imagen="<?= htmlspecialchars($d['foto_portada'] ?? '') ?>"
+               data-descripcion="<?= htmlspecialchars($d['descripcion'] ?? '') ?>"
+               data-permite-ninos="<?= (int)($d['permite_ninos'] ?? 1) ?>"
+               data-min-adultos="<?= (int)($d['min_adultos'] ?? 1) ?>"
+               data-max-adultos="<?= (int)($d['max_adultos'] ?? 10) ?>"
+               data-max-ninos="<?= (int)($d['max_ninos'] ?? 6) ?>"
+               data-cupo-total="<?= (int)($d['cupo_total'] ?? 20) ?>"
+               data-tipo-cupo="<?= htmlspecialchars($d['tipo_cupo'] ?? 'flexible') ?>"
                onclick="seleccionarPaquete(this)">
             <div class="paquete-img-wrap">
-              <img src="/Agencia_Remolinos/assets/imagenes/destinos/<?= htmlspecialchars($d['imagen']) ?>" 
+              <img src="/Agencia_Remolinos/assets/imagenes/<?= htmlspecialchars($d['foto_portada'] ?? 'default.png') ?>" 
                    alt="<?= htmlspecialchars($d['nombre']) ?>"
                    onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400'">
-              <span class="paquete-tipo <?= $d['tipo'] ?>"><?= ucfirst($d['tipo']) ?></span>
+              <span class="paquete-tipo"><?= htmlspecialchars($d['tipo_trayecto'] ?? 'Redondo') ?></span>
             </div>
             <div class="paquete-info">
               <h3><?= htmlspecialchars($d['nombre']) ?></h3>
               <p><?= htmlspecialchars(substr($d['descripcion'], 0, 60)) ?>...</p>
               <div class="paquete-precio">
-                <strong>$<?= number_format($d['precio'], 0, '.', ',') ?></strong>
+                <strong>$<?= number_format(!empty($d['es_oferta']) && !empty($d['precio_oferta']) ? $d['precio_oferta'] : $d['precio'], 0, '.', ',') ?></strong>
                 <span>por persona</span>
               </div>
             </div>
@@ -297,6 +306,7 @@ $usuario = $stmt->get_result()->fetch_assoc();
             email: <?= json_encode($usuario['email']) ?>,
             telefono: <?= json_encode($usuario['telefono'] ?? '') ?>
         },
+        preseleccionado: <?= json_encode($idPreseleccionado) ?>,
         rutas: {
             imagenes: '/Agencia_Remolinos/assets/imagenes/destinos/',
             guardar: '/Agencia_Remolinos/componentes/Reserva/guardar_reserva.php'

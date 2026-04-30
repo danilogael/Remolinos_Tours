@@ -1,103 +1,109 @@
 <?php
+// admin/guardar_destino.php
 session_start();
-if (!isset($_SESSION['rol']) || $_SESSION['rol'] != 'admin' ) {
-    header("Location: ../Login_APP/login.php");
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    header("Location: ../Login_APP/login.php"); exit();
+}
+include('../Database/conexion.php');
+
+// Subida de imagen
+$foto = 'default.png';
+if (!empty($_FILES['foto_portada']['name'])) {
+    $ext   = strtolower(pathinfo($_FILES['foto_portada']['name'], PATHINFO_EXTENSION));
+    $allow = ['jpg','jpeg','png','webp'];
+    if (in_array($ext, $allow)) {
+        $nombre   = uniqid('dest_') . '.' . $ext;
+        $destino_upload = __DIR__ . '/../assets/imagenes/' . $nombre;
+        if (move_uploaded_file($_FILES['foto_portada']['tmp_name'], $destino_upload)) {
+            $foto = $nombre;
+        }
+    }
+}
+
+// Sanitizar campos — usando columnas REALES de tu tabla
+$nombre       = mysqli_real_escape_string($conexion, trim($_POST['titulo']        ?? ''));
+$descripcion  = mysqli_real_escape_string($conexion, trim($_POST['descripcion']   ?? ''));
+$precio       = (float)($_POST['precio_adulto']  ?? 0);
+$precio_nino  = (float)($_POST['precio_nino']    ?? 0);
+$id_proveedor = (int)($_POST['id_proveedor']     ?? 0);
+$tipo_trayecto= mysqli_real_escape_string($conexion, $_POST['tipo_trayecto']      ?? 'Redondo');
+$cupo         = (int)($_POST['cupo']             ?? 20);
+$punto_salida = mysqli_real_escape_string($conexion, trim($_POST['punto_salida']  ?? ''));
+$kg_mano      = (int)($_POST['kg_mano']          ?? 10);
+$kg_doc       = (int)($_POST['kg_doc']           ?? 25);
+$seguro       = isset($_POST['seguro']) ? 1 : 0;
+$dias         = (int)($_POST['dias']             ?? 1);
+$noches       = (int)($_POST['noches']           ?? 0);
+$estado       = mysqli_real_escape_string($conexion, $_POST['estado']             ?? 'Activo');
+$fecha_salida = !empty($_POST['fecha_salida']) ? "'" . mysqli_real_escape_string($conexion, $_POST['fecha_salida']) . "'" : 'NULL';
+$foto_esc     = mysqli_real_escape_string($conexion, $foto);
+$prov_val     = $id_proveedor > 0 ? $id_proveedor : 'NULL';
+$tipo_cupo    = in_array($_POST['tipo_cupo'] ?? 'flexible', ['flexible','fijo'], true) ? $_POST['tipo_cupo'] : 'flexible';
+$permite_ninos= isset($_POST['permite_ninos']) ? 1 : 0;
+$min_adultos  = max(1, (int)($_POST['min_adultos'] ?? 1));
+$max_adultos  = max($min_adultos, (int)($_POST['max_adultos'] ?? 10));
+$max_ninos    = $permite_ninos ? max(0, (int)($_POST['max_ninos'] ?? 6)) : 0;
+$es_oferta    = isset($_POST['es_oferta']) ? 1 : 0;
+$oferta_titulo= mysqli_real_escape_string($conexion, trim($_POST['oferta_titulo'] ?? ''));
+$precio_oferta= ($_POST['precio_oferta'] ?? '') !== '' ? (float)$_POST['precio_oferta'] : 'NULL';
+$oferta_inicio= !empty($_POST['oferta_inicio']) ? "'" . mysqli_real_escape_string($conexion, $_POST['oferta_inicio']) . "'" : 'NULL';
+$oferta_fin   = !empty($_POST['oferta_fin']) ? "'" . mysqli_real_escape_string($conexion, $_POST['oferta_fin']) . "'" : 'NULL';
+$tipo_cupo_esc= mysqli_real_escape_string($conexion, $tipo_cupo);
+
+if ($nombre === '') {
+    header("Location: nuevo_destino.php?error=" . urlencode('El nombre es obligatorio.'));
     exit();
 }
 
-include('../Database/conexion.php');
+$sql = "INSERT INTO destinos
+            (nombre, descripcion, precio, precio_nino, id_proveedor, foto_portada,
+             tipo_trayecto, cupo_total, punto_salida, maleta_mano_kg, maleta_documentada_kg,
+             seguro_basico_incluido, dias, noches, fecha_salida, estado,
+             es_oferta, oferta_titulo, precio_oferta, oferta_inicio, oferta_fin,
+             permite_ninos, min_adultos, max_adultos, max_ninos, tipo_cupo)
+        VALUES
+            ('$nombre','$descripcion',$precio,$precio_nino,$prov_val,'$foto_esc',
+             '$tipo_trayecto',$cupo,'$punto_salida',$kg_mano,$kg_doc,
+             $seguro,$dias,$noches,$fecha_salida,'$estado',
+             $es_oferta,'$oferta_titulo',$precio_oferta,$oferta_inicio,$oferta_fin,
+             $permite_ninos,$min_adultos,$max_adultos,$max_ninos,'$tipo_cupo_esc')";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // 1. CORRECCIÓN DE CONEXIÓN: Usamos $conexion
-    mysqli_begin_transaction($conexion);
+if (!mysqli_query($conexion, $sql)) {
+    header("Location: nuevo_destino.php?error=" . urlencode('Error al guardar: ' . mysqli_error($conexion)));
+    exit();
+}
 
-    try {
-        // --- PROCESAMIENTO DE IMAGEN ---
-        $nombre_imagen = "default.png";
-        if (isset($_FILES['foto_portada']) && $_FILES['foto_portada']['error'] == 0) {
-            $extension = pathinfo($_FILES['foto_portada']['name'], PATHINFO_EXTENSION);
-            $nombre_imagen = "img_" . time() . "." . $extension;
-            $ruta_destino = "../assets/imagenes/" . $nombre_imagen; 
-            
-            if (!is_dir("../assets/imagenes/")) {
-                mkdir("../assets/imagenes/", 0777, true);
-            }
-            move_uploaded_file($_FILES['foto_portada']['tmp_name'], $ruta_destino);
-        }
+$id_destino = mysqli_insert_id($conexion);
 
-        // --- 2. RECOLECCIÓN DE DATOS (Mismos nombres que el formulario) ---
-        $nombre        = mysqli_real_escape_string($conexion, $_POST['titulo']);
-        $descripcion   = mysqli_real_escape_string($conexion, $_POST['descripcion']);
-        $precio_adulto = $_POST['precio_adulto'];
-        $precio_nino   = !empty($_POST['precio_nino']) ? $_POST['precio_nino'] : 0;
-        $id_proveedor  = !empty($_POST['id_proveedor']) ? $_POST['id_proveedor'] : 'NULL';
-        $tipo_trayecto = $_POST['tipo_trayecto'];
-        $cupo          = $_POST['cupo'];
-        $punto_salida  = mysqli_real_escape_string($conexion, $_POST['punto_salida']);
-        $kg_mano       = $_POST['kg_mano'];
-        $kg_doc        = $_POST['kg_doc'];
-        $seguro        = isset($_POST['seguro']) ? 1 : 0;
-        
-        // Nuevos campos que agregamos a la DB
-        $fecha_salida = $_POST['fecha_salida'];
-        $dias         = $_POST['dias'];
-        $noches       = $_POST['noches'];
-        $estado       = $_POST['estado'];
-
-        // --- 3. INSERTAR EN TABLA DESTINOS (Sincronizado con tu foto de DB) ---
-        $sql_destino = "INSERT INTO destinos (
-            nombre, descripcion, precio, precio_nino, id_proveedor, 
-            imagen, tipo_trayecto, cupo_total, punto_salida, 
-            maleta_mano_kg, maleta_documentada_kg, seguro_basico_incluido,
-            fecha_salida, dias, noches, estado
-        ) VALUES (
-            '$nombre', '$descripcion', '$precio_adulto', $precio_nino, $id_proveedor, 
-            '$nombre_imagen', '$tipo_trayecto', $cupo, '$punto_salida', 
-            $kg_mano, $kg_doc, $seguro,
-            '$fecha_salida', $dias, $noches, '$estado'
-        )";
-        
-        if (!mysqli_query($conexion, $sql_destino)) {
-            throw new Exception("Error en destinos: " . mysqli_error($conexion));
-        }
-
-        $id_nuevo_destino = mysqli_insert_id($conexion);
-
-        // --- 4. INSERTAR ITINERARIO ---
-        if (isset($_POST['itinerario_titulo'])) {
-            foreach ($_POST['itinerario_titulo'] as $i => $titulo_it) {
-                $dia_num = $i + 1;
-                $t_it = mysqli_real_escape_string($conexion, $titulo_it);
-                $d_it = mysqli_real_escape_string($conexion, $_POST['itinerario_desc'][$i]);
-                
-                if (!empty($t_it)) {
-                    $sql_it = "INSERT INTO itinerarios (id_destino, dia_numero, titulo_actividad, descripcion_actividad) 
-                               VALUES ($id_nuevo_destino, $dia_num, '$t_it', '$d_it')";
-                    mysqli_query($conexion, $sql_it);
-                }
-            }
-        }
-
-        // --- 5. INSERTAR ACTIVIDADES EXTRA ---
-        if (isset($_POST['extra_nombre'])) {
-            foreach ($_POST['extra_nombre'] as $i => $n_ex_raw) {
-                $n_ex = mysqli_real_escape_string($conexion, $n_ex_raw);
-                $p_ex = !empty($_POST['extra_precio'][$i]) ? $_POST['extra_precio'][$i] : 0;
-
-                if (!empty($n_ex)) {
-                    $sql_ex = "INSERT INTO actividades_extra (id_destino, nombre_actividad, precio_extra) 
-                               VALUES ($id_nuevo_destino, '$n_ex', $p_ex)";
-                    mysqli_query($conexion, $sql_ex);
-                }
-            }
-        }
-
-        mysqli_commit($conexion);
-        header("Location: destinos.php?msj=success");
-
-    } catch (Exception $e) {
-        mysqli_rollback($conexion);
-        echo "Error al guardar: " . $e->getMessage();
+// Guardar itinerario
+$titulos = $_POST['itinerario_titulo'] ?? [];
+$descs   = $_POST['itinerario_desc']   ?? [];
+foreach ($titulos as $i => $titulo) {
+    $titulo = trim(mysqli_real_escape_string($conexion, $titulo));
+    $desc   = trim(mysqli_real_escape_string($conexion, $descs[$i] ?? ''));
+    $dia    = $i + 1;
+    if ($titulo !== '') {
+        mysqli_query($conexion,
+            "INSERT INTO itinerarios (id_destino, dia_numero, titulo_actividad, descripcion_actividad)
+             VALUES ($id_destino, $dia, '$titulo', '$desc')"
+        );
     }
 }
-?>
+
+// Guardar actividades extra
+$extras_nombre = $_POST['extra_nombre'] ?? [];
+$extras_precio = $_POST['extra_precio'] ?? [];
+foreach ($extras_nombre as $i => $enombre) {
+    $enombre = trim(mysqli_real_escape_string($conexion, $enombre));
+    $eprecio = (float)($extras_precio[$i] ?? 0);
+    if ($enombre !== '') {
+        mysqli_query($conexion,
+            "INSERT INTO actividades_extra (id_destino, nombre_actividad, precio_extra)
+             VALUES ($id_destino, '$enombre', $eprecio)"
+        );
+    }
+}
+
+$_SESSION['flash'] = ['tipo'=>'success','msg'=>'Destino «'.$_POST['titulo'].'» creado correctamente.'];
+header('Location: destinos.php');
+exit();

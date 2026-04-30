@@ -99,12 +99,74 @@ require_once 'includes/header.php';
                     <input type="number" name="cupo" class="form-control" min="1" value="20">
                 </div>
                 <div class="col-6">
+                    <label class="form-label fw-medium">Tipo de cupo</label>
+                    <select name="tipo_cupo" class="form-select">
+                        <option value="flexible">Flexible</option>
+                        <option value="fijo">Fijo</option>
+                    </select>
+                </div>
+                <div class="col-6">
                     <label class="form-label fw-medium">Estado</label>
                     <select name="estado" class="form-select">
                         <option value="Activo">Activo</option>
                         <option value="Inactivo">Inactivo</option>
                         <option value="Agotado">Agotado</option>
                     </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card panel-card p-4 mb-4">
+            <h6 class="fw-semibold mb-3">Reglas de viajeros</h6>
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="permite_ninos" id="permite_ninos" checked>
+                        <label class="form-check-label fw-medium" for="permite_ninos">Permitir ninos en este paquete</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label class="form-label fw-medium">Min. adultos</label>
+                    <input type="number" name="min_adultos" class="form-control" min="1" value="1">
+                </div>
+                <div class="col-4">
+                    <label class="form-label fw-medium">Max. adultos</label>
+                    <input type="number" name="max_adultos" class="form-control" min="1" value="10">
+                </div>
+                <div class="col-4">
+                    <label class="form-label fw-medium">Max. ninos</label>
+                    <input type="number" name="max_ninos" class="form-control" min="0" value="6">
+                </div>
+            </div>
+        </div>
+
+        <div class="card panel-card p-4 mb-4">
+            <h6 class="fw-semibold mb-3">Oferta</h6>
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" name="es_oferta" id="es_oferta">
+                        <label class="form-check-label fw-medium" for="es_oferta">Mostrar este paquete en Ofertas</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label fw-medium">Titulo de oferta</label>
+                    <input type="text" name="oferta_titulo" class="form-control" placeholder="Ej: Promo verano, 15% de descuento">
+                </div>
+                <div class="col-4">
+                    <label class="form-label fw-medium">Precio oferta</label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input type="number" name="precio_oferta" class="form-control" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <label class="form-label fw-medium">Inicio</label>
+                    <input type="date" name="oferta_inicio" class="form-control">
+                </div>
+                <div class="col-4">
+                    <label class="form-label fw-medium">Fin</label>
+                    <input type="date" name="oferta_fin" class="form-control">
                 </div>
             </div>
         </div>
