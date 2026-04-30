@@ -28,60 +28,22 @@ function seleccionarPaquete(el) {
     precio:      parseFloat(el.dataset.precio),
     // ← ruta correcta: assets/imagenes/ (sin subcarpeta destinos/)
     imagen:      el.dataset.imagen,
-    descripcion: el.dataset.descripcion,
-    permiteNinos: el.dataset.permiteNinos !== '0',
-    minAdultos: parseInt(el.dataset.minAdultos || '1', 10),
-    maxAdultos: parseInt(el.dataset.maxAdultos || '10', 10),
-    maxNinos: parseInt(el.dataset.maxNinos || '6', 10),
-    cupoTotal: parseInt(el.dataset.cupoTotal || '20', 10),
-    tipoCupo: el.dataset.tipoCupo || 'flexible'
+    descripcion: el.dataset.descripcion
   };
-  state.adultos = Math.max(state.paquete.minAdultos, Math.min(state.adultos, state.paquete.maxAdultos));
-  state.ninos = state.paquete.permiteNinos ? Math.min(state.ninos, state.paquete.maxNinos) : 0;
-  ajustarCupoTotal();
-  document.getElementById('val-adultos').textContent = state.adultos;
-  document.getElementById('val-ninos').textContent = state.ninos;
-  document.getElementById('total-viajeros').textContent = state.adultos + state.ninos;
   actualizarResumen();
 }
 
 /* ── CAMBIAR VIAJEROS ─────────────────────────────────────── */
 function cambiarCantidad(tipo, delta) {
-  if (!state.paquete) {
-    mostrarAlerta('Primero selecciona un paquete.');
-    return;
-  }
-
   if (tipo === 'adultos') {
-    state.adultos = Math.max(state.paquete.minAdultos, Math.min(state.paquete.maxAdultos, state.adultos + delta));
+    state.adultos = Math.max(1, state.adultos + delta);
     document.getElementById('val-adultos').textContent = state.adultos;
   } else {
-    if (!state.paquete.permiteNinos) {
-      mostrarAlerta('Este paquete no permite ninos.');
-      return;
-    }
-    state.ninos = Math.max(0, Math.min(state.paquete.maxNinos, state.ninos + delta));
+    state.ninos = Math.max(0, state.ninos + delta);
     document.getElementById('val-ninos').textContent = state.ninos;
   }
-  ajustarCupoTotal();
-  document.getElementById('val-adultos').textContent = state.adultos;
-  document.getElementById('val-ninos').textContent = state.ninos;
   document.getElementById('total-viajeros').textContent = state.adultos + state.ninos;
   actualizarResumen();
-}
-
-function ajustarCupoTotal() {
-  if (!state.paquete) return;
-  const total = state.adultos + state.ninos;
-  if (total <= state.paquete.cupoTotal) return;
-
-  const exceso = total - state.paquete.cupoTotal;
-  if (state.ninos >= exceso) {
-    state.ninos -= exceso;
-  } else {
-    state.adultos = Math.max(state.paquete.minAdultos, state.adultos - (exceso - state.ninos));
-    state.ninos = 0;
-  }
 }
 
 /* ── ACTUALIZAR RESUMEN LATERAL ───────────────────────────── */
@@ -133,10 +95,6 @@ function irPaso(num) {
   }
 
   if (num === 4) {
-    if (state.paquete.tipoCupo === 'fijo' && (state.adultos + state.ninos) !== state.paquete.cupoTotal) {
-      mostrarAlerta(`Este paquete requiere exactamente ${state.paquete.cupoTotal} viajeros.`);
-      return;
-    }
     const fechaSalida = document.getElementById('fecha-salida').value;
     if (!fechaSalida) {
       mostrarAlerta('Por favor ingresa la fecha de salida.');
@@ -381,15 +339,3 @@ function mostrarAlerta(msg) {
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 4000);
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const idPreseleccionado = String(window.AppConfig?.preseleccionado || '');
-  if (!idPreseleccionado || idPreseleccionado === '0') return;
-
-  const card = Array.from(document.querySelectorAll('.paquete-card'))
-    .find(el => el.dataset.id === idPreseleccionado);
-  if (!card) return;
-
-  seleccionarPaquete(card);
-  irPaso(2);
-});

@@ -224,9 +224,9 @@ $maxPrecio = mysqli_fetch_assoc(
                                 Niños: $<?= number_format((float)$d['precio_nino'], 0, '.', ',') ?>
                             </small>
                             <?php endif; ?>
-                            <a href="/Agencia_Remolinos/componentes/Destinos/detalle.php?id=<?= (int)$d['id'] ?>"
+                            <a href="/Agencia_Remolinos/componentes/Reserva/reserva.php"
                                class="dest-btn-reservar">
-                                Ver detalles <i class="fas fa-arrow-right"></i>
+                                Reservar <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>

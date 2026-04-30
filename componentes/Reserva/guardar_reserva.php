@@ -33,7 +33,7 @@ foreach ($requeridos as $campo) {
 // ── Verificar que el destino exista y esté activo ─────────
 $id_destino = (int)$data['id_destino'];
 $destino    = mysqli_fetch_assoc(
-    mysqli_query($conexion, "SELECT id, nombre, permite_ninos, min_adultos, max_adultos, max_ninos, cupo_total, tipo_cupo FROM destinos WHERE id=$id_destino AND estado='Activo' LIMIT 1")
+    mysqli_query($conexion, "SELECT id, nombre FROM destinos WHERE id=$id_destino AND estado='Activo' LIMIT 1")
 );
 if (!$destino) {
     echo json_encode(['ok' => false, 'error' => 'El destino seleccionado no existe o no está disponible.']);
@@ -52,35 +52,6 @@ $folio = "RT-{$anio}-{$num}";
 $id_usuario        = (int)$_SESSION['id_usuario'];
 $adultos           = max(1, (int)($data['adultos'] ?? 1));
 $ninos             = max(0, (int)($data['ninos'] ?? 0));
-
-$min_adultos = (int)($destino['min_adultos'] ?? 1);
-$max_adultos = (int)($destino['max_adultos'] ?? 10);
-$max_ninos   = (int)($destino['max_ninos'] ?? 6);
-$cupo_total  = (int)($destino['cupo_total'] ?? 20);
-$permite_ninos = (int)($destino['permite_ninos'] ?? 1) === 1;
-$tipo_cupo = $destino['tipo_cupo'] ?? 'flexible';
-
-if ($adultos < $min_adultos || $adultos > $max_adultos) {
-    echo json_encode(['ok' => false, 'error' => "Este paquete permite de $min_adultos a $max_adultos adultos."]);
-    exit;
-}
-if (!$permite_ninos && $ninos > 0) {
-    echo json_encode(['ok' => false, 'error' => 'Este paquete no permite ninos.']);
-    exit;
-}
-if ($ninos > $max_ninos) {
-    echo json_encode(['ok' => false, 'error' => "Este paquete permite maximo $max_ninos ninos."]);
-    exit;
-}
-if (($adultos + $ninos) > $cupo_total) {
-    echo json_encode(['ok' => false, 'error' => "Este paquete tiene cupo maximo de $cupo_total viajeros."]);
-    exit;
-}
-if ($tipo_cupo === 'fijo' && ($adultos + $ninos) !== $cupo_total) {
-    echo json_encode(['ok' => false, 'error' => "Este paquete requiere exactamente $cupo_total viajeros."]);
-    exit;
-}
-
 $fecha_salida      = mysqli_real_escape_string($conexion, $data['fecha_salida'] ?? '');
 $fecha_regreso     = !empty($data['fecha_regreso'])
                        ? "'" . mysqli_real_escape_string($conexion, $data['fecha_regreso']) . "'"
